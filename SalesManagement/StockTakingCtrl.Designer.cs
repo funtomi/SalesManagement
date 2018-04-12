@@ -1,5 +1,5 @@
-﻿namespace SalesManagement {
-    partial class Form1 {
+﻿namespace SalesManagement.UI {
+    partial class StockTakingCtrl {
         /// <summary>
         /// 必需的设计器变量。
         /// </summary>
@@ -24,11 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
         }
 
         #endregion
     }
 }
-
