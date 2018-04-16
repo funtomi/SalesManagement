@@ -31,14 +31,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +51,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "进货单号：";
+            this.label1.Text = "商品名称：";
             // 
             // textBox1
             // 
@@ -107,26 +108,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
             this.Column2,
             this.Column3,
             this.Column4,
             this.Column5,
-            this.Column6,
             this.Column7,
+            this.Column6,
             this.Column8,
+            this.Column10,
+            this.Column1,
             this.Column9});
             this.dataGridView1.Location = new System.Drawing.Point(38, 174);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(838, 461);
             this.dataGridView1.TabIndex = 9;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "商品编号";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
@@ -136,9 +132,8 @@
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "进货单号";
+            this.Column3.HeaderText = "供应商";
             this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
@@ -154,6 +149,13 @@
             this.Column5.ReadOnly = true;
             this.Column5.Width = 80;
             // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "单价";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 90;
+            // 
             // Column6
             // 
             this.Column6.HeaderText = "数量";
@@ -161,19 +163,22 @@
             this.Column6.ReadOnly = true;
             this.Column6.Width = 80;
             // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "批发价";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 90;
-            // 
             // Column8
             // 
-            this.Column8.HeaderText = "零售价";
+            this.Column8.HeaderText = "金额";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             this.Column8.Width = 90;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "仓库";
+            this.Column10.Name = "Column10";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "进货时间";
+            this.Column1.Name = "Column1";
             // 
             // Column9
             // 
@@ -219,14 +224,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }
 }

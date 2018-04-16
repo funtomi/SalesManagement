@@ -33,9 +33,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -51,9 +49,7 @@
             this.Column2,
             this.Column4,
             this.Column5,
-            this.Column6,
-            this.Column3,
-            this.Column8,
+            this.Column7,
             this.Column9});
             this.dataGridView1.Location = new System.Drawing.Point(37, 116);
             this.dataGridView1.Name = "dataGridView1";
@@ -126,23 +122,11 @@
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
-            // Column6
+            // Column7
             // 
-            this.Column6.HeaderText = "数量";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "批发价格";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "零售价格";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
+            this.Column7.HeaderText = "会员折扣";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // Column9
             // 
@@ -180,15 +164,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
     }
 }

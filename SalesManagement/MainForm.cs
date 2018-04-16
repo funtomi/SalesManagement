@@ -15,12 +15,21 @@ namespace SalesManagement.UI {
             this.skinEngine1.SkinFile = "mp10maroon.ssk";
         }
 
+        protected override CreateParams CreateParams {
+            get {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+
         private void tSMenuItemPurchase_Click(object sender, EventArgs e) {
             PurchaseCtrl ctrl = new PurchaseCtrl(); 
             ChangeFormTo(ctrl);
         }
 
         private void ChangeFormTo(UserControl ctrl) {
+            this.panelChild.Visible = true;
             foreach (Control item in this.panelChild.Controls) {
                 item.Dispose();
             }
@@ -76,6 +85,39 @@ namespace SalesManagement.UI {
 
         private void tSMenuItemMonthSalesStatistics_Click(object sender, EventArgs e) {
             ChangeFormTo(new MonthSalesStatisticsCtrl());
+        }
+
+        private void tSMenuItemStockTakingCtrl_Click(object sender, EventArgs e) {
+            ChangeFormTo(new StockTakingCtrl());
+
+        }
+
+        private void tSMenuItemSupplierManagement_Click(object sender, EventArgs e) {
+            ChangeFormTo(new SupplierManagementCtrl());
+        }
+
+        private void tSMenuItemWarehouseManagement_Click(object sender, EventArgs e) {
+            ChangeFormTo(new WarehouseManagementCtrl());
+        }
+
+        private void tSMenuItemSizeManagement_Click(object sender, EventArgs e) {
+            ChangeFormTo(new SizeManagementCtrl());
+        }
+
+        private void tSMenuItemCommodityManagement_Click(object sender, EventArgs e) {
+            ChangeFormTo(new CommodityManagementCtrl());
+        }
+
+        private void tSMenuItemCustomerManagement_Click(object sender, EventArgs e) {
+            ChangeFormTo(new CustomerManagementCtrl());
+        }
+
+        private void tSMenuItemColorManagement_Click(object sender, EventArgs e) {
+            ChangeFormTo(new ColorManagementCtrl());
+        }
+
+        private void TsMenuItemPermissions_Click(object sender, EventArgs e) {
+            ChangeFormTo(new PermissionsCtrl());
         }
 
         

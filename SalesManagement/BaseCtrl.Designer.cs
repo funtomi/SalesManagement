@@ -55,6 +55,7 @@
             this.AutoScroll = true;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTitle);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "BaseCtrl";
             this.Size = new System.Drawing.Size(910, 656);

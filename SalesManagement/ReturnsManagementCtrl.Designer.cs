@@ -33,15 +33,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +52,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "订单编号：";
+            this.label1.Text = "商品名称：";
             // 
             // textBox1
             // 
@@ -137,10 +136,9 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column3,
             this.Column4,
             this.Column5,
-            this.Column6,
+            this.Column3,
             this.Column7,
             this.Column8});
             this.dataGridView1.Location = new System.Drawing.Point(40, 179);
@@ -149,6 +147,17 @@
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(839, 398);
             this.dataGridView1.TabIndex = 11;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.Location = new System.Drawing.Point(790, 601);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(64, 38);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "退货";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -162,12 +171,6 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "所属订单";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
             // Column4
             // 
             this.Column4.HeaderText = "规格";
@@ -180,11 +183,11 @@
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
-            // Column6
+            // Column3
             // 
-            this.Column6.HeaderText = "仓库";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
+            this.Column3.HeaderText = "数量";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column7
             // 
@@ -198,17 +201,6 @@
             this.Column8.HeaderText = "备注";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(790, 601);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(64, 38);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "退货";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // ReturnsManagementCtrl
             // 
@@ -224,7 +216,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "ReturnsManagementCtrl";
             this.TitleText = "退货管理";
             this.Controls.SetChildIndex(this.label1, 0);
@@ -256,14 +247,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.Button button2;
     }
 }

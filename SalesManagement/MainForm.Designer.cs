@@ -40,17 +40,18 @@
             this.tSMenuItemReturnsStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.tSMenuItemDailySalesStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.tSMenuItemMonthSalesStatistics = new System.Windows.Forms.ToolStripMenuItem();
-            this.库存盘点ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemStockTakingCtrl = new System.Windows.Forms.ToolStripMenuItem();
             this.基础信息维护ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.供货商管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.仓库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.商品管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.尺码管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.颜色管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.客户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.权限设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemSupplierManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemWarehouseManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemCommodityManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemSizeManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemColorManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemCustomerManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsMenuItemPermissions = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panelChild = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@
             this.统计分析ToolStripMenuItem,
             this.统计分析ToolStripMenuItem1,
             this.基础信息维护ToolStripMenuItem,
-            this.权限设置ToolStripMenuItem});
+            this.TsMenuItemPermissions});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
@@ -158,7 +159,7 @@
             this.tSMenuItemReturnsStatistics,
             this.tSMenuItemDailySalesStatistics,
             this.tSMenuItemMonthSalesStatistics,
-            this.库存盘点ToolStripMenuItem1});
+            this.tSMenuItemStockTakingCtrl});
             this.统计分析ToolStripMenuItem1.Font = new System.Drawing.Font("微软雅黑", 10.28571F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.统计分析ToolStripMenuItem1.Name = "统计分析ToolStripMenuItem1";
             this.统计分析ToolStripMenuItem1.Size = new System.Drawing.Size(90, 27);
@@ -192,68 +193,76 @@
             this.tSMenuItemMonthSalesStatistics.Text = "月销售统计";
             this.tSMenuItemMonthSalesStatistics.Click += new System.EventHandler(this.tSMenuItemMonthSalesStatistics_Click);
             // 
-            // 库存盘点ToolStripMenuItem1
+            // tSMenuItemStockTakingCtrl
             // 
-            this.库存盘点ToolStripMenuItem1.Name = "库存盘点ToolStripMenuItem1";
-            this.库存盘点ToolStripMenuItem1.Size = new System.Drawing.Size(180, 28);
-            this.库存盘点ToolStripMenuItem1.Text = "库存盘点";
+            this.tSMenuItemStockTakingCtrl.Name = "tSMenuItemStockTakingCtrl";
+            this.tSMenuItemStockTakingCtrl.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemStockTakingCtrl.Text = "库存盘点";
+            this.tSMenuItemStockTakingCtrl.Click += new System.EventHandler(this.tSMenuItemStockTakingCtrl_Click);
             // 
             // 基础信息维护ToolStripMenuItem
             // 
             this.基础信息维护ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.供货商管理ToolStripMenuItem,
-            this.仓库管理ToolStripMenuItem,
-            this.商品管理ToolStripMenuItem,
-            this.尺码管理ToolStripMenuItem,
-            this.颜色管理ToolStripMenuItem,
-            this.客户管理ToolStripMenuItem});
+            this.tSMenuItemSupplierManagement,
+            this.tSMenuItemWarehouseManagement,
+            this.tSMenuItemCommodityManagement,
+            this.tSMenuItemSizeManagement,
+            this.tSMenuItemColorManagement,
+            this.tSMenuItemCustomerManagement});
             this.基础信息维护ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 10.28571F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.基础信息维护ToolStripMenuItem.Name = "基础信息维护ToolStripMenuItem";
             this.基础信息维护ToolStripMenuItem.Size = new System.Drawing.Size(124, 27);
             this.基础信息维护ToolStripMenuItem.Text = "基础信息维护";
             // 
-            // 供货商管理ToolStripMenuItem
+            // tSMenuItemSupplierManagement
             // 
-            this.供货商管理ToolStripMenuItem.Name = "供货商管理ToolStripMenuItem";
-            this.供货商管理ToolStripMenuItem.Size = new System.Drawing.Size(171, 28);
-            this.供货商管理ToolStripMenuItem.Text = "供货商管理";
+            this.tSMenuItemSupplierManagement.Name = "tSMenuItemSupplierManagement";
+            this.tSMenuItemSupplierManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemSupplierManagement.Text = "供货商管理";
+            this.tSMenuItemSupplierManagement.Click += new System.EventHandler(this.tSMenuItemSupplierManagement_Click);
             // 
-            // 仓库管理ToolStripMenuItem
+            // tSMenuItemWarehouseManagement
             // 
-            this.仓库管理ToolStripMenuItem.Name = "仓库管理ToolStripMenuItem";
-            this.仓库管理ToolStripMenuItem.Size = new System.Drawing.Size(171, 28);
-            this.仓库管理ToolStripMenuItem.Text = "仓库管理";
+            this.tSMenuItemWarehouseManagement.Name = "tSMenuItemWarehouseManagement";
+            this.tSMenuItemWarehouseManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemWarehouseManagement.Text = "仓库管理";
+            this.tSMenuItemWarehouseManagement.Click += new System.EventHandler(this.tSMenuItemWarehouseManagement_Click);
             // 
-            // 商品管理ToolStripMenuItem
+            // tSMenuItemCommodityManagement
             // 
-            this.商品管理ToolStripMenuItem.Name = "商品管理ToolStripMenuItem";
-            this.商品管理ToolStripMenuItem.Size = new System.Drawing.Size(171, 28);
-            this.商品管理ToolStripMenuItem.Text = "商品管理";
+            this.tSMenuItemCommodityManagement.Name = "tSMenuItemCommodityManagement";
+            this.tSMenuItemCommodityManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemCommodityManagement.Text = "商品管理";
+            this.tSMenuItemCommodityManagement.Click += new System.EventHandler(this.tSMenuItemCommodityManagement_Click);
             // 
-            // 尺码管理ToolStripMenuItem
+            // tSMenuItemSizeManagement
             // 
-            this.尺码管理ToolStripMenuItem.Name = "尺码管理ToolStripMenuItem";
-            this.尺码管理ToolStripMenuItem.Size = new System.Drawing.Size(171, 28);
-            this.尺码管理ToolStripMenuItem.Text = "尺码管理";
+            this.tSMenuItemSizeManagement.Name = "tSMenuItemSizeManagement";
+            this.tSMenuItemSizeManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemSizeManagement.Text = "尺码管理";
+            this.tSMenuItemSizeManagement.Click += new System.EventHandler(this.tSMenuItemSizeManagement_Click);
             // 
-            // 颜色管理ToolStripMenuItem
+            // tSMenuItemColorManagement
             // 
-            this.颜色管理ToolStripMenuItem.Name = "颜色管理ToolStripMenuItem";
-            this.颜色管理ToolStripMenuItem.Size = new System.Drawing.Size(171, 28);
-            this.颜色管理ToolStripMenuItem.Text = "颜色管理";
+            this.tSMenuItemColorManagement.Name = "tSMenuItemColorManagement";
+            this.tSMenuItemColorManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemColorManagement.Text = "颜色管理";
+            this.tSMenuItemColorManagement.Click += new System.EventHandler(this.tSMenuItemColorManagement_Click);
             // 
-            // 客户管理ToolStripMenuItem
+            // tSMenuItemCustomerManagement
             // 
-            this.客户管理ToolStripMenuItem.Name = "客户管理ToolStripMenuItem";
-            this.客户管理ToolStripMenuItem.Size = new System.Drawing.Size(171, 28);
-            this.客户管理ToolStripMenuItem.Text = "客户管理";
+            this.tSMenuItemCustomerManagement.Name = "tSMenuItemCustomerManagement";
+            this.tSMenuItemCustomerManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemCustomerManagement.Text = "客户管理";
+            this.tSMenuItemCustomerManagement.Click += new System.EventHandler(this.tSMenuItemCustomerManagement_Click);
             // 
-            // 权限设置ToolStripMenuItem
+            // TsMenuItemPermissions
             // 
-            this.权限设置ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 10.28571F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.权限设置ToolStripMenuItem.Name = "权限设置ToolStripMenuItem";
-            this.权限设置ToolStripMenuItem.Size = new System.Drawing.Size(90, 27);
-            this.权限设置ToolStripMenuItem.Text = "权限设置";
+            this.TsMenuItemPermissions.Font = new System.Drawing.Font("微软雅黑", 10.28571F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TsMenuItemPermissions.Name = "TsMenuItemPermissions";
+            this.TsMenuItemPermissions.Size = new System.Drawing.Size(90, 27);
+            this.TsMenuItemPermissions.Text = "权限设置";
+            this.TsMenuItemPermissions.Click += new System.EventHandler(this.TsMenuItemPermissions_Click);
             // 
             // statusStrip1
             // 
@@ -272,20 +281,40 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelChild.AutoScroll = true;
-            this.panelChild.Location = new System.Drawing.Point(5, 40);
+            this.panelChild.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelChild.Location = new System.Drawing.Point(0, 33);
             this.panelChild.Margin = new System.Windows.Forms.Padding(2);
             this.panelChild.Name = "panelChild";
-            this.panelChild.Size = new System.Drawing.Size(910, 656);
+            this.panelChild.Size = new System.Drawing.Size(921, 671);
             this.panelChild.TabIndex = 2;
+            this.panelChild.Tag = "";
+            this.panelChild.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 41.7479F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.Salmon;
+            this.label1.Location = new System.Drawing.Point(165, 136);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(452, 89);
+            this.label1.TabIndex = 0;
+            this.label1.Tag = "9999";
+            this.label1.Text = "欢迎使用！！";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(923, 726);
-            this.Controls.Add(this.panelChild);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelChild);
+            this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -319,14 +348,15 @@
         private System.Windows.Forms.ToolStripMenuItem tSMenuItemDailySalesStatistics;
         private System.Windows.Forms.ToolStripMenuItem tSMenuItemMonthSalesStatistics;
         private System.Windows.Forms.ToolStripMenuItem 基础信息维护ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 供货商管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 仓库管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 商品管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 尺码管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 颜色管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 客户管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 权限设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 库存盘点ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tSMenuItemSupplierManagement;
+        private System.Windows.Forms.ToolStripMenuItem tSMenuItemWarehouseManagement;
+        private System.Windows.Forms.ToolStripMenuItem tSMenuItemCommodityManagement;
+        private System.Windows.Forms.ToolStripMenuItem tSMenuItemSizeManagement;
+        private System.Windows.Forms.ToolStripMenuItem tSMenuItemColorManagement;
+        private System.Windows.Forms.ToolStripMenuItem tSMenuItemCustomerManagement;
+        private System.Windows.Forms.ToolStripMenuItem TsMenuItemPermissions;
+        private System.Windows.Forms.ToolStripMenuItem tSMenuItemStockTakingCtrl;
         private System.Windows.Forms.Panel panelChild;
+        private System.Windows.Forms.Label label1;
     }
 }

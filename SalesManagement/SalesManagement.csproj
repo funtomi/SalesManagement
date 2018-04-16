@@ -54,17 +54,59 @@
     <Compile Include="BaseCtrl.Designer.cs">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ColorManagementCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorManagementCtrl.Designer.cs">
+      <DependentUpon>ColorManagementCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CommodityInfoQueryCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CommodityInfoQueryCtrl.Designer.cs">
       <DependentUpon>CommodityInfoQueryCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommodityManagementCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommodityManagementCtrl.Designer.cs">
+      <DependentUpon>CommodityManagementCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerManagementCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomerManagementCtrl.Designer.cs">
+      <DependentUpon>CustomerManagementCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DailySalesStatisticsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DailySalesStatisticsCtrl.Designer.cs">
+      <DependentUpon>DailySalesStatisticsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonthSalesStatisticsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MonthSalesStatisticsCtrl.Designer.cs">
+      <DependentUpon>MonthSalesStatisticsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PermissionsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PermissionsCtrl.Designer.cs">
+      <DependentUpon>PermissionsCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +128,12 @@
     <Compile Include="PurchaseStatisticsCtrl.Designer.cs">
       <DependentUpon>PurchaseStatisticsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReturnsInfoQueryCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,6 +145,12 @@
     </Compile>
     <Compile Include="ReturnsManagementCtrl.Designer.cs">
       <DependentUpon>ReturnsManagementCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnsStatisticsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReturnsStatisticsCtrl.Designer.cs">
+      <DependentUpon>ReturnsStatisticsCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="SalesInfoQueryCtrl.cs">
       <SubType>UserControl</SubType>
@@ -110,14 +164,59 @@
     <Compile Include="SalesStaffCtrl.Designer.cs">
       <DependentUpon>SalesStaffCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="SizeManagementCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SizeManagementCtrl.Designer.cs">
+      <DependentUpon>SizeManagementCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockTakingCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StockTakingCtrl.Designer.cs">
+      <DependentUpon>StockTakingCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierManagementCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SupplierManagementCtrl.Designer.cs">
+      <DependentUpon>SupplierManagementCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WarehouseManagementCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WarehouseManagementCtrl.Designer.cs">
+      <DependentUpon>WarehouseManagementCtrl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BaseCtrl.resx">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorManagementCtrl.resx">
+      <DependentUpon>ColorManagementCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CommodityInfoQueryCtrl.resx">
       <DependentUpon>CommodityInfoQueryCtrl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CommodityManagementCtrl.resx">
+      <DependentUpon>CommodityManagementCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerManagementCtrl.resx">
+      <DependentUpon>CustomerManagementCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailySalesStatisticsCtrl.resx">
+      <DependentUpon>DailySalesStatisticsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonthSalesStatisticsCtrl.resx">
+      <DependentUpon>MonthSalesStatisticsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PermissionsCtrl.resx">
+      <DependentUpon>PermissionsCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -135,17 +234,38 @@
     <EmbeddedResource Include="PurchaseInfoQueryCtrl.resx">
       <DependentUpon>PurchaseInfoQueryCtrl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseStatisticsCtrl.resx">
+      <DependentUpon>PurchaseStatisticsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReturnsInfoQueryCtrl.resx">
       <DependentUpon>ReturnsInfoQueryCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnsManagementCtrl.resx">
       <DependentUpon>ReturnsManagementCtrl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReturnsStatisticsCtrl.resx">
+      <DependentUpon>ReturnsStatisticsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalesInfoQueryCtrl.resx">
       <DependentUpon>SalesInfoQueryCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesStaffCtrl.resx">
       <DependentUpon>SalesStaffCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SizeManagementCtrl.resx">
+      <DependentUpon>SizeManagementCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockTakingCtrl.resx">
+      <DependentUpon>StockTakingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierManagementCtrl.resx">
+      <DependentUpon>SupplierManagementCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WarehouseManagementCtrl.resx">
+      <DependentUpon>WarehouseManagementCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
