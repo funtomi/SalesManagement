@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SizeInfoService.cs" />
     <Compile Include="SupplierInfoService.cs" />

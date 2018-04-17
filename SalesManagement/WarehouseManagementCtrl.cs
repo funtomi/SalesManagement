@@ -73,22 +73,7 @@ namespace SalesManagement.UI {
         private void ClearPage() {
             this.txtBoxWarehouse.Text = this.txtBoxCapicity.Text = this.txtBoxRemark.Text = "";
         }
-
-        /// <summary>
-        /// 获取管理员字段值
-        /// </summary>
-        /// <param name="permission"></param>
-        /// <returns></returns>
-        private bool GetUserPermission(string permission) {
-            switch (permission) {
-                default:
-                case "操作员":
-                    return false;
-                case "管理员":
-                    return true;
-            }
-        }
-
+          
         /// <summary>
         /// 验证输入的仓库信息
         /// </summary>
