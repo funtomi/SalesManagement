@@ -240,9 +240,7 @@ namespace SalesManagement.UI {
             }
 
         }
-        #endregion   private WarehouseInfoService _warehouseInfoService = new WarehouseInfoService(); 
-
-
+        #endregion    
       
     }
 }

@@ -277,6 +277,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "WarehouseManagementCtrl";
             this.TitleText = "仓库管理";
+            this.Load += new System.EventHandler(this.WarehouseManagementCtrl_Load);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
