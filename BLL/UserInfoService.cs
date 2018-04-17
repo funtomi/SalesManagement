@@ -67,6 +67,21 @@ namespace SalesManagement.BLL {
             return dal.DeleteEntity(out errText, id);
         }
 
+        /// <summary>
+        /// 获取登录的用户信息
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <param name="userName"></param>
+        /// <param name="passWord"></param>
+        /// <returns></returns>
+        public UserInfo GetLoginUserInfo(out string errText,string userName,string passWord) {
+            errText = "";
+            var result = dal.GetEntityList(out errText, userName, passWord);
+            if (result==null||result.Count==0) {
+                return null;
+            }
+            return result[0];
+        }
         
     }
 }

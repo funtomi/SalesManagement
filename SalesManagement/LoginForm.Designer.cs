@@ -51,6 +51,7 @@
             this.txtBoxUserName.Name = "txtBoxUserName";
             this.txtBoxUserName.Size = new System.Drawing.Size(183, 27);
             this.txtBoxUserName.TabIndex = 1;
+            this.txtBoxUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxUserName_KeyPress);
             // 
             // txtBoxPassword
             // 
@@ -59,6 +60,8 @@
             this.txtBoxPassword.Name = "txtBoxPassword";
             this.txtBoxPassword.Size = new System.Drawing.Size(183, 27);
             this.txtBoxPassword.TabIndex = 3;
+            this.txtBoxPassword.UseSystemPasswordChar = true;
+            this.txtBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxPassword_KeyPress);
             // 
             // label2
             // 
@@ -79,6 +82,7 @@
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "登录";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // pictureBox1
             // 

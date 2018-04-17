@@ -121,7 +121,34 @@ namespace DAL {
            }
        }
 
-
+       /// <summary>
+       /// 获取用户信息列表
+       /// </summary>
+       /// <param name="errText"></param>
+       /// <param name="userName">用户名</param>
+       /// <param name="password">密码</param>
+       /// <returns></returns>
+       public List<UserInfo> GetEntityList(out string errText, string userName, string password) {
+           errText = "";
+           try {
+               using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                   conn.Open();
+                   var sql = "select * from UserInfo where UserName=@UserName and Password=@Password";
+                   SqlCommand cmd = new SqlCommand(sql, conn);
+                   cmd.Parameters.AddWithValue("@UserName", userName);
+                   cmd.Parameters.AddWithValue("@Password", password);
+                   SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                   DataTable dt = new DataTable();
+                   ada.Fill(dt);
+                   conn.Close();
+                   var list = DataTableHelper.ToList<UserInfo>(dt);
+                   return list; 
+               }
+           } catch (Exception ex) {
+               errText = ex.Message;
+               return null;
+           }
+       }
        
    }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesManagement.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,23 @@ namespace SalesManagement.UI {
             this.skinEngine1.SkinFile = "mp10maroon.ssk";
         }
 
+        public MainForm(UserInfo userInfo):this() {
+            if (userInfo==null) {
+                MessageBox.Show("无效的用户信息！");
+                this.Close();
+            }
+            _userInfo = userInfo;
+        }
+
+        /// <summary>
+        /// 当前登录的用户信息
+        /// </summary>
+        public UserInfo UserInfo {
+            get { return _userInfo; }
+            set { _userInfo = value; }
+        }
+        private UserInfo _userInfo;
+
         protected override CreateParams CreateParams {
             get {
                 CreateParams cp = base.CreateParams;
@@ -23,8 +41,10 @@ namespace SalesManagement.UI {
             }
         }
 
+        #region 事件
+
         private void tSMenuItemPurchase_Click(object sender, EventArgs e) {
-            PurchaseCtrl ctrl = new PurchaseCtrl(); 
+            PurchaseCtrl ctrl = new PurchaseCtrl();
             ChangeFormTo(ctrl);
         }
 
@@ -120,6 +140,39 @@ namespace SalesManagement.UI {
             ChangeFormTo(new PermissionsCtrl());
         }
 
-        
+        #endregion
+
+        protected override void WndProc(ref Message msg) {
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_CLOSE = 0xF060;
+            if (msg.Msg == WM_SYSCOMMAND && ((int)msg.WParam == SC_CLOSE)) {
+                // 点击winform右上关闭按钮 
+                System.Environment.Exit(0);
+                return;
+            }
+            base.WndProc(ref msg);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e) {
+            if (_userInfo==null) {
+                return;
+            }
+            this.tSStatusLabelUserName.Text = _userInfo.UserName;
+            this.tSStatusLabelPermission.Text = _userInfo.Permission ? "操作员" : "管理员";
+            SetPermissionView(_userInfo.Permission);
+        }
+
+        private void SetPermissionView(bool isAdmin) {
+            if (isAdmin) {
+                return;
+            }
+            this.TsMenuItemPermissions.Visible = false;
+            this.tSMenuItemSupplierManagement.Visible = false;
+            this.tSMenuItemWarehouseManagement.Visible = false;
+            this.tSMenuItemSizeManagement.Visible = false;
+            this.tSMenuItemColorManagement.Visible = false;
+            this.tSMenuItemCommodityManagement.Visible = false;
+        }
+
     }
 }
