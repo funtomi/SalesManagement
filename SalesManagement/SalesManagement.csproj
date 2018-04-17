@@ -84,6 +84,12 @@
     <Compile Include="DailySalesStatisticsCtrl.Designer.cs">
       <DependentUpon>DailySalesStatisticsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="LabelAndTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LabelAndTextBox.Designer.cs">
+      <DependentUpon>LabelAndTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,12 +133,6 @@
     </Compile>
     <Compile Include="PurchaseStatisticsCtrl.Designer.cs">
       <DependentUpon>PurchaseStatisticsCtrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RegisterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReturnsInfoQueryCtrl.cs">
       <SubType>UserControl</SubType>
@@ -206,6 +206,9 @@
     <EmbeddedResource Include="DailySalesStatisticsCtrl.resx">
       <DependentUpon>DailySalesStatisticsCtrl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LabelAndTextBox.resx">
+      <DependentUpon>LabelAndTextBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,9 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseStatisticsCtrl.resx">
       <DependentUpon>PurchaseStatisticsCtrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegisterForm.resx">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnsInfoQueryCtrl.resx">
       <DependentUpon>ReturnsInfoQueryCtrl.cs</DependentUpon>
@@ -279,6 +279,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{aef6dbc6-302f-46cf-b9ef-71d79781b6f0}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{3c64ef78-a95d-48b4-b172-c2fe623db9aa}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
