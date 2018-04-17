@@ -42,6 +42,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierInfoService.cs" />
     <Compile Include="UserInfoService.cs" />
+    <Compile Include="WarehouseInfoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
