@@ -46,6 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SizeInfoDal.cs" />
     <Compile Include="SupplierInfoDal.cs" />
+    <Compile Include="TypeInfoDal.cs" />
     <Compile Include="UserInfoDal.cs" />
     <Compile Include="WarehouseDal.cs" />
   </ItemGroup>

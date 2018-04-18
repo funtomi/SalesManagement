@@ -6,31 +6,25 @@ using System.Data;
 using System.Data.SqlClient;
 
 namespace DAL {
-    public class ColorInfoDal : DalBase {
+    public class TypeInfoDal : DalBase {
+
         /// <summary>
-        /// 获取颜色列表
+        /// 获取类型列表
         /// </summary>
         /// <param name="errText"></param>
         /// <returns></returns>
-        public List<ColorInfo> GetEntityList(out string errText, string colorName, bool isExact) {
+        public List<TypeInfo> GetEntityList(out string errText) {
             errText = "";
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "select * from ColorInfo";
-                    if (!string.IsNullOrEmpty(colorName)) {
-                        if (isExact) {
-                            sql += " where ColorName=@ColorName";
-                        } else
-                            sql += " where ColorName like '%'+@ColorName+'%'";
-                    }
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@ColorName", colorName);
+                    var sql = "select * from TypeInfo";
+                    SqlCommand cmd = new SqlCommand(sql, conn); 
                     SqlDataAdapter ada = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     ada.Fill(dt);
                     conn.Close();
-                    var list = DataTableHelper.ToList<ColorInfo>(dt);
+                    var list = DataTableHelper.ToList<TypeInfo>(dt);
                     return list;
                 }
             } catch (Exception ex) {
@@ -40,21 +34,22 @@ namespace DAL {
         }
 
         /// <summary>
-        /// 修改颜色列表
+        /// 修改类型列表
         /// </summary>
         /// <param name="errText"></param>
-        /// <param name="colorInfo"></param>
+        /// <param name="TypeInfo"></param>
         /// <returns></returns>
-        public int UpdateEntity(out string errText, ColorInfo colorInfo) {
+        public int UpdateEntity(out string errText, TypeInfo typeInfo) {
             errText = "";
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "update ColorInfo set ColorName=@ColorName,Remark=@Remark where ColorId=@ColorId";
+                    var sql = "update TypeInfo set TypeName=@TypeName,ParentId=@ParentId,Remark=@Remark where TypeId=@TypeId";
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@ColorId", colorInfo.ColorId);
-                    cmd.Parameters.AddWithValue("@ColorName", colorInfo.ColorName);
-                    cmd.Parameters.AddWithValue("@Remark", colorInfo.Remark);
+                    cmd.Parameters.AddWithValue("@TypeId", typeInfo.TypeId);
+                    cmd.Parameters.AddWithValue("@TypeName", typeInfo.TypeName);
+                    cmd.Parameters.AddWithValue("@ParentId", typeInfo.ParentId); 
+                    cmd.Parameters.AddWithValue("@Remark", typeInfo.Remark);
                     var i = cmd.ExecuteNonQuery();
                     conn.Close();
                     return i;
@@ -66,20 +61,21 @@ namespace DAL {
         }
 
         /// <summary>
-        /// 新增一条颜色信息
+        /// 新增一条类型信息
         /// </summary>
         /// <param name="errText"></param>
-        /// <param name="colorInfo"></param>
+        /// <param name="TypeInfo"></param>
         /// <returns></returns>
-        public int InsertEntity(out string errText, ColorInfo colorInfo) {
+        public int InsertEntity(out string errText, TypeInfo TypeInfo) {
             errText = "";
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
-                    var sql = "insert into ColorInfo (ColorName,Remark) values(@ColorName,@Remark)";
+                    var sql = "insert into TypeInfo (TypeName,ParentId,Remark) values(@TypeName,@ParentId,@Remark)";
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@ColorName", colorInfo.ColorName);
-                    cmd.Parameters.AddWithValue("@Remark", colorInfo.Remark);
+                    cmd.Parameters.AddWithValue("@TypeName", TypeInfo.TypeName);
+                    cmd.Parameters.AddWithValue("@ParentId", TypeInfo.ParentId);
+                    cmd.Parameters.AddWithValue("@Remark", TypeInfo.Remark);
                     var i = cmd.ExecuteNonQuery();
                     conn.Close();
                     return i;
@@ -91,7 +87,7 @@ namespace DAL {
         }
 
         /// <summary>
-        /// 删除一条颜色信息
+        /// 删除一条类型信息
         /// </summary>
         /// <param name="errText"></param>
         /// <param name="id"></param>
@@ -101,9 +97,9 @@ namespace DAL {
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "delete ColorInfo where ColorId=@ColorId";
+                    var sql = "delete TypeInfo where TypeId=@TypeId";
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@ColorId", id);
+                    cmd.Parameters.AddWithValue("@TypeId", id);
                     var i = cmd.ExecuteNonQuery();
                     conn.Close();
                     return i;
@@ -113,5 +109,6 @@ namespace DAL {
                 return 0;
             }
         }
+
     }
 }

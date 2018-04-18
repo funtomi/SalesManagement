@@ -40,10 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorInfo.cs" />
+    <Compile Include="CommodityInfo.cs" />
     <Compile Include="CustomerInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SizeInfo.cs" />
     <Compile Include="SupplierInfo.cs" />
+    <Compile Include="TypeInfo.cs" />
     <Compile Include="UserInfo.cs" />
     <Compile Include="WarehouseInfo.cs" />
   </ItemGroup>
