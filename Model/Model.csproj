@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorInfo.cs" />
+    <Compile Include="CustomerInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SizeInfo.cs" />
     <Compile Include="SupplierInfo.cs" />
