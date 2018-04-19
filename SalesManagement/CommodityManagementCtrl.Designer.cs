@@ -24,7 +24,11 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("类别管理");
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tSMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemModify = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSMenuItemAddParent = new System.Windows.Forms.ToolStripMenuItem();
             this.txtBoxCommodityNo = new System.Windows.Forms.TextBox();
             this.btnModify = new System.Windows.Forms.Button();
             this.txtBoxRemark = new System.Windows.Forms.TextBox();
@@ -45,16 +49,8 @@
             this.lblPrice = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tSMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.tSMenuItemModify = new System.Windows.Forms.ToolStripMenuItem();
-            this.tSMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnQuery = new System.Windows.Forms.Button();
-            this.btnAll = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtBoxCommodityQuery = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,9 +61,58 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.btnAll = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtBoxCommodityQuery = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tSMenuItemAdd,
+            this.tSMenuItemDelete,
+            this.tSMenuItemModify,
+            this.tSMenuItemAddParent});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(154, 100);
+            // 
+            // tSMenuItemAdd
+            // 
+            this.tSMenuItemAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tSMenuItemAdd.DoubleClickEnabled = true;
+            this.tSMenuItemAdd.Name = "tSMenuItemAdd";
+            this.tSMenuItemAdd.Size = new System.Drawing.Size(153, 24);
+            this.tSMenuItemAdd.Text = "添加子类别";
+            this.tSMenuItemAdd.Click += new System.EventHandler(this.tSMenuItemAdd_Click);
+            // 
+            // tSMenuItemDelete
+            // 
+            this.tSMenuItemDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tSMenuItemDelete.DoubleClickEnabled = true;
+            this.tSMenuItemDelete.Name = "tSMenuItemDelete";
+            this.tSMenuItemDelete.Size = new System.Drawing.Size(153, 24);
+            this.tSMenuItemDelete.Text = "删除类别";
+            this.tSMenuItemDelete.Click += new System.EventHandler(this.tSMenuItemDelete_Click);
+            // 
+            // tSMenuItemModify
+            // 
+            this.tSMenuItemModify.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tSMenuItemModify.DoubleClickEnabled = true;
+            this.tSMenuItemModify.Name = "tSMenuItemModify";
+            this.tSMenuItemModify.Size = new System.Drawing.Size(153, 24);
+            this.tSMenuItemModify.Text = "重命名";
+            this.tSMenuItemModify.Click += new System.EventHandler(this.tSMenuItemModify_Click);
+            // 
+            // tSMenuItemAddParent
+            // 
+            this.tSMenuItemAddParent.Name = "tSMenuItemAddParent";
+            this.tSMenuItemAddParent.Size = new System.Drawing.Size(153, 24);
+            this.tSMenuItemAddParent.Text = "添加根分类";
+            this.tSMenuItemAddParent.Click += new System.EventHandler(this.tSMenuItemAddParent_Click);
             // 
             // txtBoxCommodityNo
             // 
@@ -86,6 +131,7 @@
             this.btnModify.TabIndex = 110;
             this.btnModify.Text = "修改商品";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // txtBoxRemark
             // 
@@ -169,6 +215,7 @@
             this.txtBoxDiscount.Name = "txtBoxDiscount";
             this.txtBoxDiscount.Size = new System.Drawing.Size(58, 27);
             this.txtBoxDiscount.TabIndex = 123;
+            this.txtBoxDiscount.TextChanged += new System.EventHandler(this.txtBoxDiscount_TextChanged);
             // 
             // label7
             // 
@@ -190,6 +237,7 @@
             this.btnDelete.TabIndex = 111;
             this.btnDelete.Text = "删除商品";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label5
             // 
@@ -217,6 +265,7 @@
             this.txtBoxUnitPrice.Name = "txtBoxUnitPrice";
             this.txtBoxUnitPrice.Size = new System.Drawing.Size(200, 27);
             this.txtBoxUnitPrice.TabIndex = 126;
+            this.txtBoxUnitPrice.TextChanged += new System.EventHandler(this.txtBoxDiscount_TextChanged);
             // 
             // label8
             // 
@@ -232,7 +281,7 @@
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblPrice.Location = new System.Drawing.Point(838, 452);
+            this.lblPrice.Location = new System.Drawing.Point(816, 452);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(18, 20);
             this.lblPrice.TabIndex = 128;
@@ -252,50 +301,14 @@
             // 
             this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
+            this.treeView1.LabelEdit = true;
             this.treeView1.Location = new System.Drawing.Point(23, 78);
             this.treeView1.Name = "treeView1";
-            treeNode3.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode3.Name = "RootNode";
-            treeNode3.NodeFont = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            treeNode3.Text = "类别管理";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
             this.treeView1.Size = new System.Drawing.Size(240, 564);
             this.treeView1.TabIndex = 130;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tSMenuItemAdd,
-            this.tSMenuItemDelete,
-            this.tSMenuItemModify});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 76);
-            // 
-            // tSMenuItemAdd
-            // 
-            this.tSMenuItemAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSMenuItemAdd.DoubleClickEnabled = true;
-            this.tSMenuItemAdd.Name = "tSMenuItemAdd";
-            this.tSMenuItemAdd.Size = new System.Drawing.Size(138, 24);
-            this.tSMenuItemAdd.Text = "添加类别";
-            // 
-            // tSMenuItemModify
-            // 
-            this.tSMenuItemModify.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSMenuItemModify.DoubleClickEnabled = true;
-            this.tSMenuItemModify.Name = "tSMenuItemModify";
-            this.tSMenuItemModify.Size = new System.Drawing.Size(138, 24);
-            this.tSMenuItemModify.Text = "重命名";
-            // 
-            // tSMenuItemDelete
-            // 
-            this.tSMenuItemDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSMenuItemDelete.DoubleClickEnabled = true;
-            this.tSMenuItemDelete.Name = "tSMenuItemDelete";
-            this.tSMenuItemDelete.Size = new System.Drawing.Size(138, 24);
-            this.tSMenuItemDelete.Text = "删除类别";
+            this.treeView1.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView1_AfterLabelEdit);
+            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             // 
             // btnAdd
             // 
@@ -307,6 +320,7 @@
             this.btnAdd.TabIndex = 132;
             this.btnAdd.Text = "添加商品";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dataGridView1
             // 
@@ -333,45 +347,7 @@
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(611, 225);
             this.dataGridView1.TabIndex = 133;
-            // 
-            // btnQuery
-            // 
-            this.btnQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnQuery.Location = new System.Drawing.Point(579, 86);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(92, 26);
-            this.btnQuery.TabIndex = 135;
-            this.btnQuery.Text = "查询商品";
-            this.btnQuery.UseVisualStyleBackColor = true;
-            // 
-            // btnAll
-            // 
-            this.btnAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAll.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnAll.Location = new System.Drawing.Point(676, 86);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(92, 26);
-            this.btnAll.TabIndex = 134;
-            this.btnAll.Text = "查看所有";
-            this.btnAll.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(289, 89);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 20);
-            this.label9.TabIndex = 136;
-            this.label9.Text = "商品编号：";
-            // 
-            // txtBoxCommodityQuery
-            // 
-            this.txtBoxCommodityQuery.Location = new System.Drawing.Point(374, 86);
-            this.txtBoxCommodityQuery.Name = "txtBoxCommodityQuery";
-            this.txtBoxCommodityQuery.Size = new System.Drawing.Size(200, 27);
-            this.txtBoxCommodityQuery.TabIndex = 137;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // Column1
             // 
@@ -440,11 +416,50 @@
             // 
             // Column9
             // 
-            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column9.DataPropertyName = "Remark";
             this.Column9.HeaderText = "备注";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
+            this.Column9.Width = 5;
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnQuery.Location = new System.Drawing.Point(579, 86);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(92, 26);
+            this.btnQuery.TabIndex = 135;
+            this.btnQuery.Text = "查询商品";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // btnAll
+            // 
+            this.btnAll.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnAll.Location = new System.Drawing.Point(676, 86);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(92, 26);
+            this.btnAll.TabIndex = 134;
+            this.btnAll.Text = "查看所有";
+            this.btnAll.UseVisualStyleBackColor = true;
+            this.btnAll.Click += new System.EventHandler(this.btnAllUser_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.Location = new System.Drawing.Point(289, 89);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 20);
+            this.label9.TabIndex = 136;
+            this.label9.Text = "商品编号：";
+            // 
+            // txtBoxCommodityQuery
+            // 
+            this.txtBoxCommodityQuery.Location = new System.Drawing.Point(374, 86);
+            this.txtBoxCommodityQuery.Name = "txtBoxCommodityQuery";
+            this.txtBoxCommodityQuery.Size = new System.Drawing.Size(200, 27);
+            this.txtBoxCommodityQuery.TabIndex = 137;
             // 
             // CommodityManagementCtrl
             // 
@@ -477,6 +492,7 @@
             this.Controls.Add(this.label4);
             this.Name = "CommodityManagementCtrl";
             this.TitleText = "商品管理";
+            this.Load += new System.EventHandler(this.CommodityManagementCtrl_Load);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.btnDelete, 0);
             this.Controls.SetChildIndex(this.btnModify, 0);
@@ -542,6 +558,7 @@
         private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBoxCommodityQuery;
+        private System.Windows.Forms.ToolStripMenuItem tSMenuItemAddParent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

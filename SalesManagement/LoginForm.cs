@@ -14,8 +14,7 @@ namespace SalesManagement.UI {
         public LoginForm() {
             InitializeComponent();
         }
-
-       
+         
         /// <summary>
         /// 验证输入
         /// </summary>
@@ -86,7 +85,6 @@ namespace SalesManagement.UI {
                 UserLogin();
             }
         }
-         
   
         #endregion 
     }

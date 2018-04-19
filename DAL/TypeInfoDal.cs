@@ -34,6 +34,38 @@ namespace DAL {
         }
 
         /// <summary>
+        /// 获取类别列表
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <returns></returns>
+        public List<TypeInfo> GetEntityList(out string errText, string typeName, bool isExact) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select * from TypeInfo";
+                    if (!string.IsNullOrEmpty(typeName)) {
+                        if (isExact) {
+                            sql += " where TypeName=@TypeName";
+                        } else
+                            sql += " where TypeName like '%'+@TypeName+'%'";
+                    }
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@TypeName", typeName);
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    conn.Close();
+                    var list = DataTableHelper.ToList<TypeInfo>(dt);
+                    return list;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
+
+        /// <summary>
         /// 修改类型列表
         /// </summary>
         /// <param name="errText"></param>
@@ -44,12 +76,11 @@ namespace DAL {
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "update TypeInfo set TypeName=@TypeName,ParentId=@ParentId,Remark=@Remark where TypeId=@TypeId";
+                    var sql = "update TypeInfo set TypeName=@TypeName,ParentId=@ParentId where TypeId=@TypeId";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@TypeId", typeInfo.TypeId);
                     cmd.Parameters.AddWithValue("@TypeName", typeInfo.TypeName);
-                    cmd.Parameters.AddWithValue("@ParentId", typeInfo.ParentId); 
-                    cmd.Parameters.AddWithValue("@Remark", typeInfo.Remark);
+                    cmd.Parameters.AddWithValue("@ParentId", typeInfo.ParentId);  
                     var i = cmd.ExecuteNonQuery();
                     conn.Close();
                     return i;
@@ -70,12 +101,12 @@ namespace DAL {
             errText = "";
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
-                    var sql = "insert into TypeInfo (TypeName,ParentId,Remark) values(@TypeName,@ParentId,@Remark)";
+                    var sql = "insert into TypeInfo (TypeName,ParentId,TypeId) values(@TypeName,@ParentId,@TypeId)";
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@TypeName", TypeInfo.TypeName);
                     cmd.Parameters.AddWithValue("@ParentId", TypeInfo.ParentId);
-                    cmd.Parameters.AddWithValue("@Remark", TypeInfo.Remark);
+                    cmd.Parameters.AddWithValue("@TypeId", TypeInfo.TypeId); 
                     var i = cmd.ExecuteNonQuery();
                     conn.Close();
                     return i;

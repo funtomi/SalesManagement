@@ -17,6 +17,16 @@ namespace SalesManagement.BLL {
         }
 
         /// <summary>
+        /// 查询类型
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <returns></returns>
+        public List<TypeInfo> ExactQueryTypeInfo(out string errText, string typeName) {
+            return dal.GetEntityList(out errText,typeName,true);
+        }
+
+
+        /// <summary>
         /// 修改类型
         /// </summary>
         /// <param name="errText"></param>
