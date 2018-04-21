@@ -18,7 +18,7 @@ namespace DAL {
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "select A.CommodityId,A.CommodityNo,A.CommodityName,A.TypeId,A.Size,A.Color,A.UnitPrice,A.Discount,A.Remark,B.TypeName"
+                    var sql = "select A.CommodityId,A.CommodityNo,A.CommodityName,A.TypeId,A.Size,A.Color,A.UnitPrice,A.Discount,A.Unit,A.Remark,B.TypeName"
                         +" from CommodityInfo as A"
                         +" left join TypeInfo as B on A.TypeId=B.TypeId";
                     if (!string.IsNullOrEmpty(commodityNo)) {
@@ -52,7 +52,7 @@ namespace DAL {
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "select A.CommodityId,A.CommodityNo,A.CommodityName,A.TypeId,A.Size,A.Color,A.UnitPrice,A.Discount,A.Remark,B.TypeName"
+                    var sql = "select A.CommodityId,A.CommodityNo,A.CommodityName,A.TypeId,A.Size,A.Color,A.UnitPrice,A.Discount,A.Unit,A.Remark,B.TypeName"
                         +" from CommodityInfo as A"
                         +" left join TypeInfo as B on A.TypeId=B.TypeId"
                         +" where A.TypeId=@TypeId"; 
@@ -82,7 +82,7 @@ namespace DAL {
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "update CommodityInfo set CommodityName=@CommodityName,TypeId=@CommodityNo,CommodityNo=@CommodityNo,Size=@Size,Color=@Color,UnitPrice=@UnitPrice,Discount=@Discount,Remark=@Remark where CommodityId=@CommodityId";
+                    var sql = "update CommodityInfo set CommodityName=@CommodityName,TypeId=@CommodityNo,CommodityNo=@CommodityNo,Size=@Size,Color=@Color,UnitPrice=@UnitPrice,Discount=@Discount,Unit=@Unit,Remark=@Remark where CommodityId=@CommodityId";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@CommodityId", commodityInfo.CommodityId);
                     cmd.Parameters.AddWithValue("@CommodityName", commodityInfo.CommodityName);
@@ -92,6 +92,7 @@ namespace DAL {
                     cmd.Parameters.AddWithValue("@Color", commodityInfo.Color);
                     cmd.Parameters.AddWithValue("@UnitPrice", commodityInfo.UnitPrice);
                     cmd.Parameters.AddWithValue("@Discount", commodityInfo.Discount);
+                    cmd.Parameters.AddWithValue("@Unit", commodityInfo.Unit);
                     cmd.Parameters.AddWithValue("@Remark", commodityInfo.Remark);
                     var i = cmd.ExecuteNonQuery();
                     conn.Close();
@@ -113,8 +114,8 @@ namespace DAL {
             errText = "";
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
-                    var sql = "insert into CommodityInfo (CommodityName,TypeId,CommodityNo,Size,Color,UnitPrice,Discount,Remark)"
-                    + " values(@CommodityName,@TypeId,@CommodityNo,@Size,@Color,@UnitPrice,@Discount,@Remark)";
+                    var sql = "insert into CommodityInfo (CommodityName,TypeId,CommodityNo,Size,Color,UnitPrice,Discount,Unit,Remark)"
+                    + " values(@CommodityName,@TypeId,@CommodityNo,@Size,@Color,@UnitPrice,@Discount,@Unit,@Remark)";
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@CommodityId", commodityInfo.CommodityId);
@@ -125,6 +126,7 @@ namespace DAL {
                     cmd.Parameters.AddWithValue("@Color", commodityInfo.Color);
                     cmd.Parameters.AddWithValue("@UnitPrice", commodityInfo.UnitPrice);
                     cmd.Parameters.AddWithValue("@Discount", commodityInfo.Discount);
+                    cmd.Parameters.AddWithValue("@Unit", commodityInfo.Unit);
                     cmd.Parameters.AddWithValue("@Remark", commodityInfo.Remark);
                     var i = cmd.ExecuteNonQuery();
                     conn.Close();

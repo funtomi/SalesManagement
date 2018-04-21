@@ -25,7 +25,7 @@ namespace SalesManagement.UI {
             DataTable dt = new DataTable();
             dt.Columns.Add("WarehouseId", typeof(Guid));
             dt.Columns.Add("WarehouseName");
-            dt.Columns.Add("Capicity"); 
+            dt.Columns.Add("Capicity",typeof(int)); 
             dt.Columns.Add("Remark");
             return dt;
         }
@@ -91,6 +91,16 @@ namespace SalesManagement.UI {
                 MessageBox.Show("库存量不可为空！");
                 return false;
             } 
+            int i=0;
+            var cap = Int32.TryParse(this.txtBoxCapicity.Text, out i);
+            if (!cap) {
+                MessageBox.Show("库存量格式输入不正确！");
+                return false;
+            }
+            if (i<=0) {
+                MessageBox.Show("库存量不可小于0！");
+                return false;
+            }
             return true;
         }
 
@@ -135,7 +145,7 @@ namespace SalesManagement.UI {
             }
             string errText;
             var warehouseInfo = new WarehouseInfo() {
-                WarehouseId = _currentId, WarehouseName = this.txtBoxWarehouse.Text, Capicity = this.txtBoxCapicity.Text,
+                WarehouseId = _currentId, WarehouseName = this.txtBoxWarehouse.Text, Capicity = Convert.ToInt32(this.txtBoxCapicity.Text),
                 Remark = this.txtBoxRemark.Text
             };
             var i = _warehouseInfoService.InsertEntity(out errText, warehouseInfo);
@@ -157,7 +167,7 @@ namespace SalesManagement.UI {
             }
             string errText;
             var warehouseInfo = new WarehouseInfo() {
-                WarehouseId = _currentId, WarehouseName = this.txtBoxWarehouse.Text, Capicity = this.txtBoxCapicity.Text,
+                WarehouseId = _currentId, WarehouseName = this.txtBoxWarehouse.Text, Capicity = Convert.ToInt32(this.txtBoxCapicity.Text),
                  Remark = this.txtBoxRemark.Text
             };
             var i = _warehouseInfoService.UpdateEntity(out errText, warehouseInfo);
@@ -219,7 +229,7 @@ namespace SalesManagement.UI {
                 var info = list[e.RowIndex];
                 _currentId = info.WarehouseId;
                 this.txtBoxWarehouse.Text = info.WarehouseName;
-                this.txtBoxCapicity.Text = info.Capicity;
+                this.txtBoxCapicity.Text = info.Capicity.ToString();
                 this.txtBoxRemark.Text = info.Remark;
                 return;
             }

@@ -34,10 +34,7 @@
             this.tSMenuItemPurchaseInfoQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.tSMenuItemSalesInfoQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.tSMenuItemReturnsInfoQuery = new System.Windows.Forms.ToolStripMenuItem();
-            this.tSMenuItemCommodityInfoQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.统计分析ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tSMenuItemPurchaseStatistics = new System.Windows.Forms.ToolStripMenuItem();
-            this.tSMenuItemReturnsStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.tSMenuItemDailySalesStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.tSMenuItemMonthSalesStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.tSMenuItemStockTakingCtrl = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,10 +47,10 @@
             this.tSMenuItemCustomerManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.TsMenuItemPermissions = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.panelChild = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.tSStatusLabelUserName = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSStatusLabelPermission = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panelChild = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -120,8 +117,7 @@
             this.统计分析ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tSMenuItemPurchaseInfoQuery,
             this.tSMenuItemSalesInfoQuery,
-            this.tSMenuItemReturnsInfoQuery,
-            this.tSMenuItemCommodityInfoQuery});
+            this.tSMenuItemReturnsInfoQuery});
             this.统计分析ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 10.28571F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.统计分析ToolStripMenuItem.Name = "统计分析ToolStripMenuItem";
             this.统计分析ToolStripMenuItem.Size = new System.Drawing.Size(90, 27);
@@ -148,18 +144,9 @@
             this.tSMenuItemReturnsInfoQuery.Text = "退货信息查询";
             this.tSMenuItemReturnsInfoQuery.Click += new System.EventHandler(this.tSMenuItemReturnsInfoQuery_Click);
             // 
-            // tSMenuItemCommodityInfoQuery
-            // 
-            this.tSMenuItemCommodityInfoQuery.Name = "tSMenuItemCommodityInfoQuery";
-            this.tSMenuItemCommodityInfoQuery.Size = new System.Drawing.Size(188, 28);
-            this.tSMenuItemCommodityInfoQuery.Text = "商品信息查询";
-            this.tSMenuItemCommodityInfoQuery.Click += new System.EventHandler(this.tSMenuItemCommodityInfoQuery_Click);
-            // 
             // 统计分析ToolStripMenuItem1
             // 
             this.统计分析ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tSMenuItemPurchaseStatistics,
-            this.tSMenuItemReturnsStatistics,
             this.tSMenuItemDailySalesStatistics,
             this.tSMenuItemMonthSalesStatistics,
             this.tSMenuItemStockTakingCtrl});
@@ -168,38 +155,24 @@
             this.统计分析ToolStripMenuItem1.Size = new System.Drawing.Size(90, 27);
             this.统计分析ToolStripMenuItem1.Text = "统计分析";
             // 
-            // tSMenuItemPurchaseStatistics
-            // 
-            this.tSMenuItemPurchaseStatistics.Name = "tSMenuItemPurchaseStatistics";
-            this.tSMenuItemPurchaseStatistics.Size = new System.Drawing.Size(171, 28);
-            this.tSMenuItemPurchaseStatistics.Text = "进货统计";
-            this.tSMenuItemPurchaseStatistics.Click += new System.EventHandler(this.tSMenuItemPurchaseStatistics_Click);
-            // 
-            // tSMenuItemReturnsStatistics
-            // 
-            this.tSMenuItemReturnsStatistics.Name = "tSMenuItemReturnsStatistics";
-            this.tSMenuItemReturnsStatistics.Size = new System.Drawing.Size(171, 28);
-            this.tSMenuItemReturnsStatistics.Text = "退货统计";
-            this.tSMenuItemReturnsStatistics.Click += new System.EventHandler(this.tSMenuItemReturnsStatistics_Click);
-            // 
             // tSMenuItemDailySalesStatistics
             // 
             this.tSMenuItemDailySalesStatistics.Name = "tSMenuItemDailySalesStatistics";
-            this.tSMenuItemDailySalesStatistics.Size = new System.Drawing.Size(171, 28);
+            this.tSMenuItemDailySalesStatistics.Size = new System.Drawing.Size(180, 28);
             this.tSMenuItemDailySalesStatistics.Text = "日销售统计";
             this.tSMenuItemDailySalesStatistics.Click += new System.EventHandler(this.tSMenuItemDailySalesStatistics_Click);
             // 
             // tSMenuItemMonthSalesStatistics
             // 
             this.tSMenuItemMonthSalesStatistics.Name = "tSMenuItemMonthSalesStatistics";
-            this.tSMenuItemMonthSalesStatistics.Size = new System.Drawing.Size(171, 28);
+            this.tSMenuItemMonthSalesStatistics.Size = new System.Drawing.Size(180, 28);
             this.tSMenuItemMonthSalesStatistics.Text = "月销售统计";
             this.tSMenuItemMonthSalesStatistics.Click += new System.EventHandler(this.tSMenuItemMonthSalesStatistics_Click);
             // 
             // tSMenuItemStockTakingCtrl
             // 
             this.tSMenuItemStockTakingCtrl.Name = "tSMenuItemStockTakingCtrl";
-            this.tSMenuItemStockTakingCtrl.Size = new System.Drawing.Size(171, 28);
+            this.tSMenuItemStockTakingCtrl.Size = new System.Drawing.Size(180, 28);
             this.tSMenuItemStockTakingCtrl.Text = "库存盘点";
             this.tSMenuItemStockTakingCtrl.Click += new System.EventHandler(this.tSMenuItemStockTakingCtrl_Click);
             // 
@@ -220,42 +193,42 @@
             // tSMenuItemSupplierManagement
             // 
             this.tSMenuItemSupplierManagement.Name = "tSMenuItemSupplierManagement";
-            this.tSMenuItemSupplierManagement.Size = new System.Drawing.Size(171, 28);
+            this.tSMenuItemSupplierManagement.Size = new System.Drawing.Size(180, 28);
             this.tSMenuItemSupplierManagement.Text = "供货商管理";
             this.tSMenuItemSupplierManagement.Click += new System.EventHandler(this.tSMenuItemSupplierManagement_Click);
             // 
             // tSMenuItemWarehouseManagement
             // 
             this.tSMenuItemWarehouseManagement.Name = "tSMenuItemWarehouseManagement";
-            this.tSMenuItemWarehouseManagement.Size = new System.Drawing.Size(171, 28);
+            this.tSMenuItemWarehouseManagement.Size = new System.Drawing.Size(180, 28);
             this.tSMenuItemWarehouseManagement.Text = "仓库管理";
             this.tSMenuItemWarehouseManagement.Click += new System.EventHandler(this.tSMenuItemWarehouseManagement_Click);
             // 
             // tSMenuItemCommodityManagement
             // 
             this.tSMenuItemCommodityManagement.Name = "tSMenuItemCommodityManagement";
-            this.tSMenuItemCommodityManagement.Size = new System.Drawing.Size(171, 28);
+            this.tSMenuItemCommodityManagement.Size = new System.Drawing.Size(180, 28);
             this.tSMenuItemCommodityManagement.Text = "商品管理";
             this.tSMenuItemCommodityManagement.Click += new System.EventHandler(this.tSMenuItemCommodityManagement_Click);
             // 
             // tSMenuItemSizeManagement
             // 
             this.tSMenuItemSizeManagement.Name = "tSMenuItemSizeManagement";
-            this.tSMenuItemSizeManagement.Size = new System.Drawing.Size(171, 28);
+            this.tSMenuItemSizeManagement.Size = new System.Drawing.Size(180, 28);
             this.tSMenuItemSizeManagement.Text = "尺码管理";
             this.tSMenuItemSizeManagement.Click += new System.EventHandler(this.tSMenuItemSizeManagement_Click);
             // 
             // tSMenuItemColorManagement
             // 
             this.tSMenuItemColorManagement.Name = "tSMenuItemColorManagement";
-            this.tSMenuItemColorManagement.Size = new System.Drawing.Size(171, 28);
+            this.tSMenuItemColorManagement.Size = new System.Drawing.Size(180, 28);
             this.tSMenuItemColorManagement.Text = "颜色管理";
             this.tSMenuItemColorManagement.Click += new System.EventHandler(this.tSMenuItemColorManagement_Click);
             // 
             // tSMenuItemCustomerManagement
             // 
             this.tSMenuItemCustomerManagement.Name = "tSMenuItemCustomerManagement";
-            this.tSMenuItemCustomerManagement.Size = new System.Drawing.Size(171, 28);
+            this.tSMenuItemCustomerManagement.Size = new System.Drawing.Size(180, 28);
             this.tSMenuItemCustomerManagement.Text = "客户管理";
             this.tSMenuItemCustomerManagement.Click += new System.EventHandler(this.tSMenuItemCustomerManagement_Click);
             // 
@@ -280,6 +253,18 @@
             this.statusStrip.Size = new System.Drawing.Size(923, 28);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
+            // 
+            // tSStatusLabelUserName
+            // 
+            this.tSStatusLabelUserName.Name = "tSStatusLabelUserName";
+            this.tSStatusLabelUserName.Size = new System.Drawing.Size(27, 23);
+            this.tSStatusLabelUserName.Text = "无";
+            // 
+            // tSStatusLabelPermission
+            // 
+            this.tSStatusLabelPermission.Name = "tSStatusLabelPermission";
+            this.tSStatusLabelPermission.Size = new System.Drawing.Size(27, 23);
+            this.tSStatusLabelPermission.Text = "无";
             // 
             // panelChild
             // 
@@ -308,18 +293,6 @@
             this.label1.TabIndex = 0;
             this.label1.Tag = "9999";
             this.label1.Text = "欢迎使用！！";
-            // 
-            // tSStatusLabelUserName
-            // 
-            this.tSStatusLabelUserName.Name = "tSStatusLabelUserName";
-            this.tSStatusLabelUserName.Size = new System.Drawing.Size(27, 23);
-            this.tSStatusLabelUserName.Text = "无";
-            // 
-            // tSStatusLabelPermission
-            // 
-            this.tSStatusLabelPermission.Name = "tSStatusLabelPermission";
-            this.tSStatusLabelPermission.Size = new System.Drawing.Size(27, 23);
-            this.tSStatusLabelPermission.Text = "无";
             // 
             // MainForm
             // 
@@ -362,10 +335,7 @@
         private System.Windows.Forms.ToolStripMenuItem tSMenuItemPurchaseInfoQuery;
         private System.Windows.Forms.ToolStripMenuItem tSMenuItemSalesInfoQuery;
         private System.Windows.Forms.ToolStripMenuItem tSMenuItemReturnsInfoQuery;
-        private System.Windows.Forms.ToolStripMenuItem tSMenuItemCommodityInfoQuery;
         private System.Windows.Forms.ToolStripMenuItem 统计分析ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem tSMenuItemPurchaseStatistics;
-        private System.Windows.Forms.ToolStripMenuItem tSMenuItemReturnsStatistics;
         private System.Windows.Forms.ToolStripMenuItem tSMenuItemDailySalesStatistics;
         private System.Windows.Forms.ToolStripMenuItem tSMenuItemMonthSalesStatistics;
         private System.Windows.Forms.ToolStripMenuItem 基础信息维护ToolStripMenuItem;

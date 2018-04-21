@@ -36,6 +36,7 @@ namespace SalesManagement.UI {
             dt.Columns.Add("Color");
             dt.Columns.Add("UnitPrice", typeof(decimal));
             dt.Columns.Add("Discount", typeof(int));
+            dt.Columns.Add("Unit");
             dt.Columns.Add("Remark");
             return dt;
         }
@@ -109,7 +110,8 @@ namespace SalesManagement.UI {
         /// 清除界面
         /// </summary>
         private void ClearPage() {
-            this.txtBoxCommodityNo.Text = this.txtBoxCommodityName.Text = this.txtBoxUnitPrice.Text = this.txtBoxDiscount.Text = this.txtBoxRemark.Text = "";
+            this.txtBoxCommodityNo.Text = this.txtBoxCommodityName.Text = this.txtBoxUnitPrice.Text = this.txtBoxDiscount.Text
+                = this.txtBoxRemark.Text = this.txtBoxUnit.Text = "";
             this.cmboxSize.SelectedIndex =this.cmboxSize.SelectedIndex>0?0:this.cmboxSize.SelectedIndex;
             this.cmboxColor.SelectedIndex =this.cmboxColor.SelectedIndex>0?0:this.cmboxColor.SelectedIndex;
         }
@@ -173,6 +175,10 @@ namespace SalesManagement.UI {
             var result = unitPrice * (Convert.ToDecimal(discount)) * 0.1m;
             if (result<=0||result>unitPrice) {
                 MessageBox.Show("折扣不正确！");
+                return false;
+            }
+            if (string.IsNullOrEmpty(this.txtBoxUnit.Text)) {
+                MessageBox.Show("单位不可为空！");
                 return false;
             }
             return true;
@@ -372,11 +378,12 @@ namespace SalesManagement.UI {
             }
             if (!HasCommodityNoValidator(this.txtBoxCommodityNo.Text, false)) {
                 return;
-            }
+            } 
             string errText;
             var commodityInfo = new CommodityInfo() {
                 CommodityId = _currentId, CommodityNo=this.txtBoxCommodityNo.Text, CommodityName = this.txtBoxCommodityName.Text,
                 TypeId =_currentTypeId,Size=this.cmboxSize.Text,Color=this.cmboxColor.Text, Remark = this.txtBoxRemark.Text,
+                Unit=this.txtBoxUnit.Text
             };
             commodityInfo.Discount = float.Parse(this.txtBoxDiscount.Text);
             commodityInfo.UnitPrice = Convert.ToDecimal(this.txtBoxUnitPrice.Text);
@@ -401,7 +408,8 @@ namespace SalesManagement.UI {
             string errText;
             var commodityInfo = new CommodityInfo() {
                 CommodityId = _currentId, CommodityNo = this.txtBoxCommodityNo.Text, CommodityName = this.txtBoxCommodityName.Text,
-                TypeId = _currentTypeId, Size = this.cmboxSize.Text, Color = this.cmboxColor.Text, Remark = this.txtBoxRemark.Text
+                TypeId = _currentTypeId, Size = this.cmboxSize.Text, Color = this.cmboxColor.Text, Remark = this.txtBoxRemark.Text,
+                Unit = this.txtBoxUnit.Text
             };
             commodityInfo.Discount = float.Parse(this.txtBoxDiscount.Text);
             commodityInfo.UnitPrice = Convert.ToDecimal(this.txtBoxUnitPrice.Text);
@@ -579,12 +587,16 @@ namespace SalesManagement.UI {
         }
 
         private void treeView1_DoubleClick(object sender, EventArgs e) {
+            _currentTypeId = Guid.Empty;
             var node = this.treeView1.SelectedNode;
             if (node==null) {
                 return;
             }
             var item = node.Tag as TypeInfo;
             if (item==null) {
+                return;
+            }
+            if (node.Nodes.Count>0) {
                 return;
             }
             _currentTypeId = item.TypeId;

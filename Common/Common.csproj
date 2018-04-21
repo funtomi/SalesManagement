@@ -40,7 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTableHelper.cs" />
+    <Compile Include="EntityHelper.cs" />
+    <Compile Include="OrderGeneratorHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{3c64ef78-a95d-48b4-b172-c2fe623db9aa}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

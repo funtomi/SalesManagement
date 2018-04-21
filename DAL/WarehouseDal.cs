@@ -40,6 +40,32 @@ namespace DAL {
         }
 
         /// <summary>
+        /// 获取仓库列表
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <returns></returns>
+        public List<WarehouseInfo> GetEntityList(out string errText, Guid warehouseId) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select * from WarehouseInfo where WarehouseId=@WarehouseId";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@WarehouseId", warehouseId);
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    conn.Close();
+                    var list = DataTableHelper.ToList<WarehouseInfo>(dt);
+                    return list;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
+
+        /// <summary>
         /// 修改仓库列表
         /// </summary>
         /// <param name="errText"></param>
@@ -76,9 +102,10 @@ namespace DAL {
             errText = "";
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
-                    var sql = "insert into WarehouseInfo (WarehouseName,Capicity,Remark) values(@WarehouseName,@Capicity,@Remark)";
+                    var sql = "insert into WarehouseInfo (WarehouseId,WarehouseName,Capicity,Remark) values(@WarehouseId,@WarehouseName,@Capicity,@Remark)";
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@WarehouseId", WarehouseInfo.WarehouseId);
                     cmd.Parameters.AddWithValue("@WarehouseName", WarehouseInfo.WarehouseName);
                     cmd.Parameters.AddWithValue("@Capicity", WarehouseInfo.Capicity);
                     cmd.Parameters.AddWithValue("@Remark", WarehouseInfo.Remark);

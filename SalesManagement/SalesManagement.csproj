@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCommodityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCommodityForm.Designer.cs">
+      <DependentUpon>AddCommodityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     <Compile Include="WarehouseManagementCtrl.Designer.cs">
       <DependentUpon>WarehouseManagementCtrl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddCommodityForm.resx">
+      <DependentUpon>AddCommodityForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseCtrl.resx">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,6 +293,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{aef6dbc6-302f-46cf-b9ef-71d79781b6f0}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{e8a55430-6c17-4d13-a272-35f190882de3}</Project>
+      <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{3c64ef78-a95d-48b4-b172-c2fe623db9aa}</Project>

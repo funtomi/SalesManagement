@@ -44,7 +44,7 @@ namespace SalesManagement.UI {
         #region 事件
 
         private void tSMenuItemPurchase_Click(object sender, EventArgs e) {
-            PurchaseCtrl ctrl = new PurchaseCtrl();
+            PurchaseCtrl ctrl = new PurchaseCtrl(_userInfo);
             ChangeFormTo(ctrl);
         }
 

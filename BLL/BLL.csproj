@@ -43,7 +43,9 @@
     <Compile Include="CommodityInfoService.cs" />
     <Compile Include="CustomerInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseOrderDocService.cs" />
     <Compile Include="SizeInfoService.cs" />
+    <Compile Include="StockManageService.cs" />
     <Compile Include="SupplierInfoService.cs" />
     <Compile Include="TypeInfoService.cs" />
     <Compile Include="UserInfoService.cs" />
