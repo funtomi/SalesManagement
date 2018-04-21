@@ -23,4 +23,10 @@ namespace SalesManagement.Model {
         public decimal Price { get; set; } 
         public string Remark { get; set; }
     }
+
+    public class PurchaseDocClientInfo : PurchaseDocInfo {
+        public string SupplierName { get; set; }
+        public string UserName { get; set; }
+        public string WarehouseName { get; set; }
+    }
 }

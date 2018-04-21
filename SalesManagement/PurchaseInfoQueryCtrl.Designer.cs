@@ -31,6 +31,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnQuery = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnQueryAll = new System.Windows.Forms.Button();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +43,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnQueryAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,6 +102,7 @@
             this.btnQuery.TabIndex = 8;
             this.btnQuery.Text = "查询";
             this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // dataGridView1
             // 
@@ -130,6 +131,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(838, 461);
             this.dataGridView1.TabIndex = 9;
             // 
+            // btnQueryAll
+            // 
+            this.btnQueryAll.Location = new System.Drawing.Point(774, 110);
+            this.btnQueryAll.Name = "btnQueryAll";
+            this.btnQueryAll.Size = new System.Drawing.Size(83, 40);
+            this.btnQueryAll.TabIndex = 10;
+            this.btnQueryAll.Text = "查看全部";
+            this.btnQueryAll.UseVisualStyleBackColor = true;
+            this.btnQueryAll.Click += new System.EventHandler(this.btnQueryAll_Click);
+            // 
             // Column11
             // 
             this.Column11.DataPropertyName = "PurchaseDocNo";
@@ -147,6 +158,7 @@
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "SupplierName";
             this.Column3.HeaderText = "供应商";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -161,6 +173,7 @@
             // 
             // Column7
             // 
+            this.Column7.DataPropertyName = "WarehouseId";
             this.Column7.HeaderText = "WarehouseId";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -168,6 +181,7 @@
             // 
             // Column10
             // 
+            this.Column10.DataPropertyName = "WarehouseName";
             this.Column10.HeaderText = "仓库";
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
@@ -189,6 +203,7 @@
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "UserName";
             this.Column2.HeaderText = "操作员";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -196,6 +211,7 @@
             // Column9
             // 
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column9.DataPropertyName = "Remark";
             this.Column9.HeaderText = "备注";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
@@ -207,15 +223,6 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.Visible = false;
-            // 
-            // btnQueryAll
-            // 
-            this.btnQueryAll.Location = new System.Drawing.Point(774, 110);
-            this.btnQueryAll.Name = "btnQueryAll";
-            this.btnQueryAll.Size = new System.Drawing.Size(83, 40);
-            this.btnQueryAll.TabIndex = 10;
-            this.btnQueryAll.Text = "查看全部";
-            this.btnQueryAll.UseVisualStyleBackColor = true;
             // 
             // PurchaseInfoQueryCtrl
             // 
@@ -231,6 +238,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PurchaseInfoQueryCtrl";
             this.TitleText = "进货信息查询";
+            this.Load += new System.EventHandler(this.PurchaseInfoQueryCtrl_Load);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtboxPurchaseNo, 0);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -256,6 +264,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnQueryAll;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -267,6 +276,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button btnQueryAll;
     }
 }

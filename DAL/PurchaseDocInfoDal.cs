@@ -16,25 +16,65 @@ namespace DAL {
         /// </summary>
         /// <param name="errText"></param>
         /// <returns></returns>
-        public List<PurchaseDocInfo> GetEntityList(out string errText, string purchaseDocName, bool isExact) {
+        public List<PurchaseDocClientInfo> GetEntityList(out string errText, string purchaseDocNo, DateTime startDt, DateTime endDt) {
             errText = "";
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "select * from PurchaseDoc";
-                    if (!string.IsNullOrEmpty(purchaseDocName)) {
-                        if (isExact) {
-                            sql += " where PurchaseDocName=@PurchaseDocName";
-                        } else
-                            sql += " where PurchaseDocName like '%'+@PurchaseDocName+'%'";
+                    var sql = "select A.OperatorId,A.Price,A.PurchaseDocId,A.PurchaseDocNo,A.PurchaseTime,A.Remark,A.SupplierId,A.WarehouseId,"
+                     + "B.SupplierName,C.UserName,D.WarehouseName from PurchaseDoc as A"
+                     + " left join SupplierInfo as B on A.SupplierId=B.SupplierId"
+                     + " left join UserInfo as C on A.OperatorId=C.Id"
+                     + " left join WarehouseInfo as D on D.WarehouseId=A.WarehouseId";
+                    if (!string.IsNullOrEmpty(purchaseDocNo)) {
+                        sql += " where A.PurchaseDocNo like '%'+@PurchaseDocNo+'%'";
+                        if (startDt != null && endDt != null && startDt < endDt) {
+                            sql += " and A.PurchaseTime between @StartTime and @EndTime";
+                        }
+                    } else {
+                        if (startDt != null && endDt != null && startDt < endDt) {
+                            sql += " where A.PurchaseTime between @StartTime and @EndTime";
+                        }
                     }
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@PurchaseDocName", purchaseDocName);
+                    cmd.Parameters.AddWithValue("@PurchaseDocNo", purchaseDocNo);
+                    cmd.Parameters.AddWithValue("@StartTime", startDt);
+                    cmd.Parameters.AddWithValue("@EndTime", endDt);
                     SqlDataAdapter ada = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     ada.Fill(dt);
                     conn.Close();
-                    var list = DataTableHelper.ToList<PurchaseDocInfo>(dt);
+                    var list = DataTableHelper.ToList<PurchaseDocClientInfo>(dt);
+                    return list;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 获取进货列表
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <returns></returns>
+        public List<PurchaseDocClientInfo> GetEntityList(out string errText) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select A.OperatorId,A.Price,A.PurchaseDocId,A.PurchaseDocNo,A.PurchaseTime,A.Remark,A.SupplierId,A.WarehouseId,"
+                     + "B.SupplierName,C.UserName,D.WarehouseName from PurchaseDoc as A"
+                     + " left join SupplierInfo as B on A.SupplierId=B.SupplierId"
+                     + " left join UserInfo as C on A.OperatorId=C.Id"
+                     + " left join WarehouseInfo as D on D.WarehouseId=A.WarehouseId";
+                    
+                    SqlCommand cmd = new SqlCommand(sql, conn); 
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    conn.Close();
+                    var list = DataTableHelper.ToList<PurchaseDocClientInfo>(dt);
                     return list;
                 }
             } catch (Exception ex) {
@@ -75,6 +115,8 @@ namespace DAL {
             }
         }
 
+
+      
     }
     public class PurchaseDetailDocInfoDal : DalBase {
 

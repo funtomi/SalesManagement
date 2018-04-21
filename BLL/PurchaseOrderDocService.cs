@@ -44,5 +44,14 @@ namespace SalesManagement.BLL {
             return sum;
         }
 
+
+        public List<PurchaseDocClientInfo> QueryPurchaseDocInfo(out string errText, string docNo, DateTime startDate, DateTime endDate) {
+            return _dal.GetEntityList(out errText, docNo, startDate, endDate);
+        }
+
+        public List<PurchaseDocClientInfo> QueryPurchaseDocInfo(out string errText) {
+            return _dal.GetEntityList(out errText);
+
+        }
     }
 }
