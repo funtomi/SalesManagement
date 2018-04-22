@@ -232,5 +232,37 @@ namespace DAL {
                 return null;
             }
         }
+
+        /// <summary>
+        /// 获取容量
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <param name="commodityId"></param>
+        /// <returns></returns>
+        public StockDetailClientInfo GetCommodityStock(out string errText, Guid commodityId) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select A.StockDetailId,A.WarehouseId,A.CommodityId,A.Count,A.Remark,B.WarehouseName from StockDetail as A" 
+                             +" left join WarehouseInfo as B on A.WarehouseId=B.WarehouseId"
+                             +" where A.CommodityId=@CommodityId";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@CommodityId", commodityId);
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    conn.Close();
+                    var list = DataTableHelper.ToList<StockDetailClientInfo>(dt);
+                    if (list==null||list.Count==0) {
+                        return null;
+                    }
+                    return list[0];
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
     }
 }

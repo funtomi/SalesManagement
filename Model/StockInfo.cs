@@ -15,4 +15,8 @@ namespace SalesManagement.Model {
         public int Count { get; set; }
         public string Remark { get; set; }
     }
+
+    public class StockDetailClientInfo : StockDetailInfo {
+        public string WarehouseName;
+    }
 }

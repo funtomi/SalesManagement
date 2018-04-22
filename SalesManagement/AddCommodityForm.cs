@@ -20,15 +20,16 @@ namespace SalesManagement.UI {
             this.Column12.TrueValue = true;
         }
 
-        public AddCommodityForm(DataTable dt):this() {
+        public AddCommodityForm(DataTable dt)
+            : this() {
             _currentDt = dt;
         }
         private DataTable _currentDt;
         private CommodityInfoService _commodityInfoService = new CommodityInfoService();
         private TypeInfoService _typeInfoService = new TypeInfoService();
-/// <summary>
-/// 需要添加的商品
-/// </summary>
+        /// <summary>
+        /// 需要添加的商品
+        /// </summary>
         public List<CommodityClientInfo> SelectedInfos {
             get { return _selectedInfos; }
             set { _selectedInfos = value; }
@@ -88,11 +89,11 @@ namespace SalesManagement.UI {
             var data = EntityHelper.CreateInstanceCollection(result);
             this.dataGridView1.DataSource = data;
         }
-      
+
         /// <summary>
         /// 初始化数据
         /// </summary>
-        private void InitCommodityData() { 
+        private void InitCommodityData() {
             string errText = "";
             if (_commodityInfoService == null) {
                 _commodityInfoService = new CommodityInfoService();
@@ -103,7 +104,7 @@ namespace SalesManagement.UI {
                 this.dataGridView1.DataSource = CreateDtTemplate();
                 return;
             }
-            var data = GetDistinctData(_currentDt,list);
+            var data = GetDistinctData(_currentDt, list);
             this.dataGridView1.DataSource = EntityHelper.CreateInstanceCollection(data);
         }
 
@@ -114,7 +115,7 @@ namespace SalesManagement.UI {
         /// <param name="list"></param>
         /// <returns></returns>
         private List<CommodityInfo> GetDistinctData(DataTable oldData, List<CommodityInfo> list) {
-            if (oldData==null||oldData.Rows.Count==0) {
+            if (oldData == null || oldData.Rows.Count == 0) {
                 return list;
             }
             foreach (DataRow row in oldData.Rows) {
@@ -140,7 +141,7 @@ namespace SalesManagement.UI {
         private void btnAdd_Click(object sender, EventArgs e) {
             var list = this.dataGridView1.DataSource as List<CommodityClientInfo>;
             _selectedInfos.Clear();
-            if (list==null||list.Count==0) {
+            if (list == null || list.Count == 0) {
                 MessageBox.Show("没有选中的商品！");
                 return;
             }
@@ -154,6 +155,6 @@ namespace SalesManagement.UI {
         }
         #endregion
 
-        
+
     }
 }

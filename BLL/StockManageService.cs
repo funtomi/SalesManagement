@@ -39,7 +39,7 @@ namespace SalesManagement.BLL {
                 return 0;
             }
             foreach (var item in details) {
-                var i = SaveStockDetailInfo(out errText,warehouseId, item.CommodityId, item.Count, item.Remark);
+                var i = SaveStockDetailInfo(out errText, warehouseId, item.CommodityId, item.Count, item.Remark);
                 if (i <= 0) {
                     return i;
                 }
@@ -48,7 +48,7 @@ namespace SalesManagement.BLL {
         }
 
         /// <summary>
-        /// 保存库存明细
+        /// 保存库存明细（加库存）
         /// </summary>
         /// <param name="errText"></param>
         /// <param name="warehouseId"></param>
@@ -85,6 +85,75 @@ namespace SalesManagement.BLL {
             i = _stockInfoDal.UpdateEntity(out errText, info3);
             return i;
         }
-         
+
+        public StockDetailClientInfo GetCommdityWarehouse(out string errText, Guid commodityId) {
+            return _stockDetailInfoDal.GetCommodityStock(out errText, commodityId);
+        }
+
+        public int SalesOrderManage(out string errText, SalesInfo salesInfo, List<SalesDetailInfo> details) {
+            errText = "";
+            if (salesInfo == null || details == null || details.Count == 0) {
+                errText = "信息不足，销售单保存失败！";
+                return 0;
+            }
+            foreach (var commodity in details) {
+                var warehouse = commodity.WarehouseId;
+                var list = _stockDetailInfoDal.GetEntityList(out errText, warehouse, commodity.CommodityId);
+                if (list == null || list.Count == 0) {
+                    errText = "没有库存信息！";
+                    return 0;
+                }
+                var stock = list[0];
+                if (stock.Count < commodity.Count) {
+                    errText = string.Format("商品{0}库存不足，当前库存{1}", commodity.CommodityId, stock.Count);
+                    return 0;
+                }
+            }
+            foreach (var commodity in details) {
+                var i = SaveSalesStockInfo(out errText, commodity.WarehouseId, commodity.CommodityId, commodity.Count, commodity.Remark);
+                if (i <= 0) {
+                    return i;
+                }
+            }
+            return 1;
+        }
+
+        /// <summary>
+        /// 减库存
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <param name="warehouseId"></param>
+        /// <param name="commodityId"></param>
+        /// <param name="count"></param>
+        /// <param name="remark"></param>
+        /// <returns></returns>
+        private int SaveSalesStockInfo(out string errText, Guid warehouseId, Guid commodityId, int count, string remark) {
+            errText = "";
+            if (warehouseId == Guid.Empty || commodityId == Guid.Empty || count == 0) {
+                errText = "无效信息！";
+                return 0;
+            }
+            var list = _stockDetailInfoDal.GetEntityList(out errText, warehouseId, commodityId);
+            int i = 0;
+            if (list == null || list.Count == 0) {
+                errText = "没有库存！";
+                return 0;
+            } else {
+                var info = list[0];
+                info.Count -= count;
+                i = _stockDetailInfoDal.UpdateEntity(out errText, info);
+            }
+            if (i <= 0) {
+                return i;
+            }
+            var stock = _stockInfoDal.GetEntityList(out errText, warehouseId, true);
+            if (stock == null || stock.Count == 0) {
+                return 0;
+            }
+            var info3 = stock[0];
+            info3.Count -= count;
+            i = _stockInfoDal.UpdateEntity(out errText, info3);
+            return i;
+        }
     }
 }

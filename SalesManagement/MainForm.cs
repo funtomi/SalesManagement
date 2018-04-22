@@ -59,7 +59,7 @@ namespace SalesManagement.UI {
         }
 
         private void tSMenuItemSalesStaff_Click(object sender, EventArgs e) {
-            SalesStaffCtrl ctrl = new SalesStaffCtrl();
+            SalesStaffCtrl ctrl = new SalesStaffCtrl(_userInfo);
             ChangeFormTo(ctrl);
         }
 
