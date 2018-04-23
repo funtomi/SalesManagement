@@ -2,6 +2,7 @@
 using SalesManagement.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,10 @@ namespace SalesManagement.BLL {
 
         public List<SalesInfo> QueryWithSalesNoAndDate(out string errText, string salesNo, DateTime dateTime1, DateTime dateTime2) {
             return _dal.GetEntityListWithSalesNoAndDate(out errText, salesNo,dateTime1,dateTime2);
+        }
+
+        public DataTable GetSalesStatistic(out string errText, DateTime dateTime) {
+            return _dal.GetStatisticData(out errText, dateTime);
         }
     }
 }

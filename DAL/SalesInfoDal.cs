@@ -92,6 +92,39 @@ namespace DAL {
                 return null;
             }
         }
+
+        /// <summary>
+        /// 获取日统计信息
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public DataTable GetStatisticData(out string errText, DateTime dateTime) {
+            errText = "";
+            var startDt = DateTime.Parse(dateTime.ToString("yyyy-MM-dd") + " 00:00:00");
+            var endDt = DateTime.Parse(dateTime.ToString("yyyy-MM-dd") + " 23:59:59");
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select A.CommodityId,min(B.CommodityNo) as CommodityNo,min(B.CommodityName) as CommodityName,sum(A.Count)as Count,sum(A.Price) as Price from SalesDetailDoc as A "
+                             + " left join CommodityInfo as B on A.CommodityId=B.CommodityId"
+                             + " where A.SalesDocId in "
+                             + "(select SalesDocId from SalesDoc where SalesTime between @StartDt and @EndDt)"
+                             + " group by A.CommodityId";
+                    SqlCommand cmd = new SqlCommand(sql, conn); 
+                    cmd.Parameters.AddWithValue("@StartDt", startDt);
+                    cmd.Parameters.AddWithValue("@EndDt", endDt);
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    conn.Close();
+                    return dt;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
     }
     public class SalesDetailInfoDal: DalBase {
 
