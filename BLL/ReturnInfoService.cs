@@ -45,5 +45,13 @@ namespace SalesManagement.BLL {
            }
            return sum;
        }
+
+       public List<ReturnInfo> QueryAllData(out string errText) {
+           return _dal.GetEntityList(out errText);
+       }
+
+       public List<ReturnInfo> QueryWithSalesNoAndDate(out string errText, string returnNo, DateTime dateTime1, DateTime dateTime2) {
+           return _dal.GetEntityListWithSalesNoAndDate(out errText, returnNo, dateTime1, dateTime2);
+       }
    }
 }

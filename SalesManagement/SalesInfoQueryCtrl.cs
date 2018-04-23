@@ -15,7 +15,7 @@ namespace SalesManagement.UI {
         }
 
         private SalesInfoService _srv = new SalesInfoService();
-        
+
         /// <summary>
         /// 初始化数据
         /// </summary>
@@ -23,9 +23,9 @@ namespace SalesManagement.UI {
             ClearPage();
             QueryAllData();
         }
-/// <summary>
-/// 查询所有数据
-/// </summary>
+        /// <summary>
+        /// 查询所有数据
+        /// </summary>
         private void QueryAllData() {
             string errText;
             List<SalesInfo> list = _srv.QueryAllData(out errText);
@@ -56,7 +56,7 @@ namespace SalesManagement.UI {
             dt.Columns.Add("OperatorId", typeof(Guid));
             dt.Columns.Add("SalesTime", typeof(DateTime));
             dt.Columns.Add("CustomerId", typeof(Guid));
-            dt.Columns.Add("Price", typeof(decimal)); 
+            dt.Columns.Add("Price", typeof(decimal));
             dt.Columns.Add("Remark");
             return dt;
         }
@@ -72,11 +72,11 @@ namespace SalesManagement.UI {
             }
             var startValue = this.dtPickerStart.Value;
             var endValue = this.dtPickerEnd.Value;
-            if (startValue==null||endValue==null) {
+            if (startValue == null || endValue == null) {
                 MessageBox.Show("请选择查询的销售时间！");
                 return false;
             }
-            if (startValue>endValue) {
+            if (startValue > endValue) {
                 MessageBox.Show("开始时间不能大于结束时间！");
                 return false;
             }
@@ -97,15 +97,15 @@ namespace SalesManagement.UI {
             }
             string errText;
             List<SalesInfo> list = _srv.QueryWithSalesNoAndDate(out errText, this.txtBoxSalesNo.Text, this.dtPickerStart.Value, this.dtPickerEnd.Value);
-            if (list==null||list.Count==0) {
+            if (list == null || list.Count == 0) {
                 this.dataGridView1.DataSource = CreateDtTemplate();
                 return;
             }
             this.dataGridView1.DataSource = list;
         }
 
-        
+
         #endregion
-        
+
     }
 }

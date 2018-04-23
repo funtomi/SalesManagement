@@ -35,7 +35,6 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +53,6 @@
             this.Column9,
             this.Column2,
             this.Column1,
-            this.Column6,
             this.Column7,
             this.Column3,
             this.Column4});
@@ -125,6 +123,7 @@
             this.btnQueryAll.TabIndex = 25;
             this.btnQueryAll.Text = "查看全部";
             this.btnQueryAll.UseVisualStyleBackColor = true;
+            this.btnQueryAll.Click += new System.EventHandler(this.btnQueryAll_Click);
             // 
             // btnQuery
             // 
@@ -134,6 +133,7 @@
             this.btnQuery.TabIndex = 24;
             this.btnQuery.Text = "查询";
             this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // Column9
             // 
@@ -157,12 +157,6 @@
             this.Column1.HeaderText = "退货单号";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "仓库";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             // 
             // Column7
             // 
@@ -200,6 +194,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "ReturnsInfoQueryCtrl";
             this.TitleText = "退货信息查询";
+            this.Load += new System.EventHandler(this.ReturnsInfoQueryCtrl_Load);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtReturnNo, 0);
@@ -224,14 +219,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtPickerEnd;
+        private System.Windows.Forms.Button btnQueryAll;
+        private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button btnQueryAll;
-        private System.Windows.Forms.Button btnQuery;
     }
 }
