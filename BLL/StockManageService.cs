@@ -155,5 +155,32 @@ namespace SalesManagement.BLL {
             i = _stockInfoDal.UpdateEntity(out errText, info3);
             return i;
         }
+
+        public int ReturnOrderManage(out string errText, ReturnInfo info, List<ReturnDetailInfo> details) {
+            errText = "";
+            if (info == null || details == null || details.Count == 0) {
+                errText = "信息不足，退货失败！";
+                return 0;
+            } 
+            foreach (var commodity in details) {
+                var list = _stockInfoDal.GetEntityList(out errText, commodity.WarehouseId, true);
+                if (list == null || list.Count == 0) {
+                    return 0;
+                }
+                var com = list[0];
+                if (com.Capacity - com.Count<commodity.Count) {
+                    errText = "仓库容量不足!";
+                    return 0;
+                }
+            }
+           
+            foreach (var item in details) {
+                var i = SaveStockDetailInfo(out errText, item.WarehouseId, item.CommodityId, item.Count,"");
+                if (i <= 0) {
+                    return i;
+                }
+            }
+            return 1;
+        }
     }
 }

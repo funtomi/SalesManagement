@@ -64,7 +64,7 @@ namespace SalesManagement.UI {
         }
 
         private void tSMenuItemReturnsManagement_Click(object sender, EventArgs e) {
-            ReturnsManagementCtrl ctrl = new ReturnsManagementCtrl();
+            ReturnsManagementCtrl ctrl = new ReturnsManagementCtrl(_userInfo);
             ChangeFormTo(ctrl);
         }
 

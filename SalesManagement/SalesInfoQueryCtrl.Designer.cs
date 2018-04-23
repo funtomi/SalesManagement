@@ -24,20 +24,19 @@
         /// </summary>
         private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtBoxSalesNo = new System.Windows.Forms.TextBox();
+            this.btnQuery = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtPickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtPickerStart = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnQueryAll = new System.Windows.Forms.Button();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -46,55 +45,56 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 75);
+            this.label1.Location = new System.Drawing.Point(36, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "销售单号：";
             // 
-            // textBox1
+            // txtBoxSalesNo
             // 
-            this.textBox1.Location = new System.Drawing.Point(127, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 27);
-            this.textBox1.TabIndex = 3;
+            this.txtBoxSalesNo.Location = new System.Drawing.Point(127, 68);
+            this.txtBoxSalesNo.Name = "txtBoxSalesNo";
+            this.txtBoxSalesNo.Size = new System.Drawing.Size(200, 27);
+            this.txtBoxSalesNo.TabIndex = 3;
             // 
-            // button1
+            // btnQuery
             // 
-            this.button1.Location = new System.Drawing.Point(679, 101);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 40);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "查询";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnQuery.Location = new System.Drawing.Point(679, 109);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 40);
+            this.btnQuery.TabIndex = 13;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(351, 121);
+            this.label3.Location = new System.Drawing.Point(351, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(20, 20);
             this.label3.TabIndex = 12;
             this.label3.Text = "~";
             // 
-            // dateTimePicker2
+            // dtPickerEnd
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(395, 114);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 27);
-            this.dateTimePicker2.TabIndex = 11;
+            this.dtPickerEnd.Location = new System.Drawing.Point(395, 116);
+            this.dtPickerEnd.Name = "dtPickerEnd";
+            this.dtPickerEnd.Size = new System.Drawing.Size(200, 27);
+            this.dtPickerEnd.TabIndex = 11;
             // 
-            // dateTimePicker1
+            // dtPickerStart
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(127, 114);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 27);
-            this.dateTimePicker1.TabIndex = 10;
+            this.dtPickerStart.Location = new System.Drawing.Point(127, 116);
+            this.dtPickerStart.Name = "dtPickerStart";
+            this.dtPickerStart.Size = new System.Drawing.Size(200, 27);
+            this.dtPickerStart.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 121);
+            this.label4.Location = new System.Drawing.Point(36, 119);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 20);
             this.label4.TabIndex = 9;
@@ -102,77 +102,86 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
+            this.Column10,
+            this.Column11,
+            this.CustomerId,
             this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
+            this.Column12,
             this.Column8,
             this.Column9});
             this.dataGridView1.Location = new System.Drawing.Point(40, 165);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(836, 469);
             this.dataGridView1.TabIndex = 14;
             // 
-            // Column1
+            // btnQueryAll
             // 
-            this.Column1.HeaderText = "商品编号";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.btnQueryAll.Location = new System.Drawing.Point(782, 109);
+            this.btnQueryAll.Name = "btnQueryAll";
+            this.btnQueryAll.Size = new System.Drawing.Size(94, 40);
+            this.btnQueryAll.TabIndex = 15;
+            this.btnQueryAll.Text = "查看全部";
+            this.btnQueryAll.UseVisualStyleBackColor = true;
+            this.btnQueryAll.Click += new System.EventHandler(this.btnQueryAll_Click);
             // 
-            // Column2
+            // Column10
             // 
-            this.Column2.HeaderText = "商品名称";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.Column10.DataPropertyName = "SalesDocId";
+            this.Column10.HeaderText = "SalesDocId";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "OperatorId";
+            this.Column11.HeaderText = "OperatorId";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Visible = false;
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.DataPropertyName = "CustomerId";
+            this.CustomerId.HeaderText = "CustomerId";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.ReadOnly = true;
+            this.CustomerId.Visible = false;
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "SalesDocNo";
             this.Column3.HeaderText = "销售单号";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
-            // Column4
+            // Column12
             // 
-            this.Column4.HeaderText = "尺码";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "颜色";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "数量";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "客户编号";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.Column12.DataPropertyName = "SalesTime";
+            this.Column12.HeaderText = "销售时间";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
             // 
             // Column8
             // 
-            this.Column8.HeaderText = "价格";
+            this.Column8.DataPropertyName = "Price";
+            this.Column8.HeaderText = "金额";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
             // Column9
             // 
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column9.DataPropertyName = "Remark";
             this.Column9.HeaderText = "备注";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
@@ -180,24 +189,27 @@
             // SalesInfoQueryCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.Controls.Add(this.btnQueryAll);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnQuery);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtPickerEnd);
+            this.Controls.Add(this.dtPickerStart);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxSalesNo);
             this.Controls.Add(this.label1);
             this.Name = "SalesInfoQueryCtrl";
             this.TitleText = "销售信息查询";
+            this.Load += new System.EventHandler(this.SalesInfoQueryCtrl_Load);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
+            this.Controls.SetChildIndex(this.txtBoxSalesNo, 0);
             this.Controls.SetChildIndex(this.label4, 0);
-            this.Controls.SetChildIndex(this.dateTimePicker1, 0);
-            this.Controls.SetChildIndex(this.dateTimePicker2, 0);
+            this.Controls.SetChildIndex(this.dtPickerStart, 0);
+            this.Controls.SetChildIndex(this.dtPickerEnd, 0);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.btnQuery, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
+            this.Controls.SetChildIndex(this.btnQueryAll, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,20 +219,19 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtBoxSalesNo;
+        private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtPickerEnd;
+        private System.Windows.Forms.DateTimePicker dtPickerStart;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button btnQueryAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }

@@ -301,11 +301,6 @@ namespace SalesManagement.UI {
         private void SalesStaffCtrl_Load(object sender, EventArgs e) {
             InitData();
         }
-        #endregion 
-
-      
-
-       
-
+        #endregion  
     }
 }

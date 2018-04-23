@@ -27,11 +27,11 @@ namespace SalesManagement.Model {
         public string Remark { get; set; }
     }
 
-    public class SalesClientInfo : SalesDetailInfo {
-        public string CommodityName;
-        public string WarehouseName;
-        public string Size;
-        public string Color;
-        public string Unit;
+    public class SalesClientInfo : SalesDetailInfo { 
+        public string CommodityNo { get; set; }
+        public string CommodityName { get; set; }
+        public string WarehouseName { get; set; }
+        public string Size { get; set; }
+        public string Color { get; set; }
     }
 }
