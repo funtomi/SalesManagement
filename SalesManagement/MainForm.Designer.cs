@@ -158,21 +158,21 @@
             // tSMenuItemDailySalesStatistics
             // 
             this.tSMenuItemDailySalesStatistics.Name = "tSMenuItemDailySalesStatistics";
-            this.tSMenuItemDailySalesStatistics.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemDailySalesStatistics.Size = new System.Drawing.Size(171, 28);
             this.tSMenuItemDailySalesStatistics.Text = "日销售统计";
             this.tSMenuItemDailySalesStatistics.Click += new System.EventHandler(this.tSMenuItemDailySalesStatistics_Click);
             // 
             // tSMenuItemMonthSalesStatistics
             // 
             this.tSMenuItemMonthSalesStatistics.Name = "tSMenuItemMonthSalesStatistics";
-            this.tSMenuItemMonthSalesStatistics.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemMonthSalesStatistics.Size = new System.Drawing.Size(171, 28);
             this.tSMenuItemMonthSalesStatistics.Text = "月销售统计";
             this.tSMenuItemMonthSalesStatistics.Click += new System.EventHandler(this.tSMenuItemMonthSalesStatistics_Click);
             // 
             // tSMenuItemStockTakingCtrl
             // 
             this.tSMenuItemStockTakingCtrl.Name = "tSMenuItemStockTakingCtrl";
-            this.tSMenuItemStockTakingCtrl.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemStockTakingCtrl.Size = new System.Drawing.Size(171, 28);
             this.tSMenuItemStockTakingCtrl.Text = "库存盘点";
             this.tSMenuItemStockTakingCtrl.Click += new System.EventHandler(this.tSMenuItemStockTakingCtrl_Click);
             // 
@@ -193,42 +193,42 @@
             // tSMenuItemSupplierManagement
             // 
             this.tSMenuItemSupplierManagement.Name = "tSMenuItemSupplierManagement";
-            this.tSMenuItemSupplierManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemSupplierManagement.Size = new System.Drawing.Size(171, 28);
             this.tSMenuItemSupplierManagement.Text = "供货商管理";
             this.tSMenuItemSupplierManagement.Click += new System.EventHandler(this.tSMenuItemSupplierManagement_Click);
             // 
             // tSMenuItemWarehouseManagement
             // 
             this.tSMenuItemWarehouseManagement.Name = "tSMenuItemWarehouseManagement";
-            this.tSMenuItemWarehouseManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemWarehouseManagement.Size = new System.Drawing.Size(171, 28);
             this.tSMenuItemWarehouseManagement.Text = "仓库管理";
             this.tSMenuItemWarehouseManagement.Click += new System.EventHandler(this.tSMenuItemWarehouseManagement_Click);
             // 
             // tSMenuItemCommodityManagement
             // 
             this.tSMenuItemCommodityManagement.Name = "tSMenuItemCommodityManagement";
-            this.tSMenuItemCommodityManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemCommodityManagement.Size = new System.Drawing.Size(171, 28);
             this.tSMenuItemCommodityManagement.Text = "商品管理";
             this.tSMenuItemCommodityManagement.Click += new System.EventHandler(this.tSMenuItemCommodityManagement_Click);
             // 
             // tSMenuItemSizeManagement
             // 
             this.tSMenuItemSizeManagement.Name = "tSMenuItemSizeManagement";
-            this.tSMenuItemSizeManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemSizeManagement.Size = new System.Drawing.Size(171, 28);
             this.tSMenuItemSizeManagement.Text = "尺码管理";
             this.tSMenuItemSizeManagement.Click += new System.EventHandler(this.tSMenuItemSizeManagement_Click);
             // 
             // tSMenuItemColorManagement
             // 
             this.tSMenuItemColorManagement.Name = "tSMenuItemColorManagement";
-            this.tSMenuItemColorManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemColorManagement.Size = new System.Drawing.Size(171, 28);
             this.tSMenuItemColorManagement.Text = "颜色管理";
             this.tSMenuItemColorManagement.Click += new System.EventHandler(this.tSMenuItemColorManagement_Click);
             // 
             // tSMenuItemCustomerManagement
             // 
             this.tSMenuItemCustomerManagement.Name = "tSMenuItemCustomerManagement";
-            this.tSMenuItemCustomerManagement.Size = new System.Drawing.Size(180, 28);
+            this.tSMenuItemCustomerManagement.Size = new System.Drawing.Size(171, 28);
             this.tSMenuItemCustomerManagement.Text = "客户管理";
             this.tSMenuItemCustomerManagement.Click += new System.EventHandler(this.tSMenuItemCustomerManagement_Click);
             // 
@@ -312,6 +312,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "服装销售管理系统";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

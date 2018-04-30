@@ -16,8 +16,9 @@ namespace SalesManagement.UI {
             this.skinEngine1.SkinFile = "mp10maroon.ssk";
         }
 
-        public MainForm(UserInfo userInfo):this() {
-            if (userInfo==null) {
+        public MainForm(UserInfo userInfo)
+            : this() {
+            if (userInfo == null) {
                 MessageBox.Show("无效的用户信息！");
                 this.Close();
             }
@@ -32,6 +33,7 @@ namespace SalesManagement.UI {
             set { _userInfo = value; }
         }
         private UserInfo _userInfo;
+        private bool _hasClosed = false;
 
         protected override CreateParams CreateParams {
             get {
@@ -160,19 +162,18 @@ namespace SalesManagement.UI {
 
         #endregion
 
-        protected override void WndProc(ref Message msg) {
-            const int WM_SYSCOMMAND = 0x0112;
-            const int SC_CLOSE = 0xF060;
-            if (msg.Msg == WM_SYSCOMMAND && ((int)msg.WParam == SC_CLOSE)) {
-                // 点击winform右上关闭按钮 
-                System.Environment.Exit(0);
-                return;
-            }
-            base.WndProc(ref msg);
-        }
+        //protected override void WndProc(ref Message msg) {
+        //    const int WM_SYSCOMMAND = 0x0112;
+        //    const int SC_CLOSE = 0xF060;
+        //    if (msg.Msg == WM_SYSCOMMAND && ((int)msg.WParam == SC_CLOSE)) {
+        //        System.Environment.Exit(0);
+        //        return;
+        //    }
+        //    base.WndProc(ref msg);
+        //}
 
         private void MainForm_Load(object sender, EventArgs e) {
-            if (_userInfo==null) {
+            if (_userInfo == null) {
                 return;
             }
             this.tSStatusLabelUserName.Text = _userInfo.UserName;
@@ -191,6 +192,24 @@ namespace SalesManagement.UI {
             this.tSMenuItemColorManagement.Visible = false;
             this.tSMenuItemCommodityManagement.Visible = false;
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
+            // 点击winform右上关闭按钮 
+            if (_hasClosed) {
+                e.Cancel = true;
+                return;
+            }
+            MessageBoxButtons mess = MessageBoxButtons.OKCancel;
+            DialogResult dr = MessageBox.Show("确定要退出系统吗？", "提示", mess);
+            if (dr == DialogResult.OK) {
+                _hasClosed = true;
+                Application.Exit();
+            } else {
+                e.Cancel = true;
+                _hasClosed = false;
+            }
+        }
+
 
     }
 }
