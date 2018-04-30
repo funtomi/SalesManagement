@@ -41,6 +41,31 @@ namespace DAL {
         }
 
         /// <summary>
+        /// 获取所有有库存的仓库
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <returns></returns>
+        public List<StockDetailClientInfo> GetEntityList(out string errText) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select * from Stock left join StockDetail on Stock.WarehouseId=StockDetail.WarehouseId"; 
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    conn.Close();
+                    var list = DataTableHelper.ToList<StockDetailClientInfo>(dt);
+                    return list;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
+
+        /// <summary>
         /// 修改仓库列表
         /// </summary>
         /// <param name="errText"></param>

@@ -66,8 +66,16 @@ namespace SalesManagement.BLL {
             return _dal.GetEntityListWithSalesNoAndDate(out errText, salesNo,dateTime1,dateTime2);
         }
 
-        public DataTable GetSalesStatistic(out string errText, DateTime dateTime) {
-            return _dal.GetStatisticData(out errText, dateTime);
+        public DataTable GetDailySalesStatistic(out string errText, DateTime dateTime) {
+            var startDt = DateTime.Parse(dateTime.ToString("yyyy-MM-dd") + " 00:00:00");
+            var endDt = DateTime.Parse(dateTime.ToString("yyyy-MM-dd") + " 23:59:59");
+            return _dal.GetStatisticData(out errText, startDt, endDt);
+        }
+
+        public DataTable GetMonthSalesStatistic(out string errText, DateTime dateTime) {
+            var startDt = dateTime.AddDays(1 - dateTime.Day);
+            var endDt = dateTime.AddDays(1 - dateTime.Day).AddMonths(1).AddDays(-1);  
+            return _dal.GetStatisticData(out errText, startDt, endDt);
         }
     }
 }

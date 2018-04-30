@@ -182,5 +182,9 @@ namespace SalesManagement.BLL {
             }
             return 1;
         }
+
+        public List<StockDetailClientInfo> GetAllStocks(out string errText) {
+           return _stockInfoDal.GetEntityList(out errText);
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace SalesManagement.UI {
       
         
         private void InitData() {
-            this.dtPicker1.Value = DateTime.Now;
+            this.dtPicker1.Value = DateTime.Now.AddDays(-DateTime.Now.Day + 1);
             QueryData();
         }
 
@@ -26,7 +26,7 @@ namespace SalesManagement.UI {
                 return;
             }
             string errText;
-            DataTable data = _srv.GetSalesStatistic(out errText, this.dtPicker1.Value);
+            DataTable data = _srv.GetDailySalesStatistic(out errText, this.dtPicker1.Value);
             if (data==null||data.Rows.Count==0) {
                 this.dataGridView1.DataSource = CreateDtTemplate();
                 return;                
@@ -72,15 +72,16 @@ namespace SalesManagement.UI {
             data.Rows.Add(row);
             return data;
         }
-        #region 事件
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            InitData();
-        }
+        #region 事件 
 
         private void btnQuery_Click(object sender, EventArgs e) {
             QueryData();
         }
         #endregion
+
+        private void DailySalesStatisticsCtrl_Load(object sender, EventArgs e) {
+            InitData();
+        }
 
          
     }

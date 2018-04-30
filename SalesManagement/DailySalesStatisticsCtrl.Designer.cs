@@ -24,14 +24,14 @@
         /// </summary>
         private void InitializeComponent() {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnQuery = new System.Windows.Forms.Button();
-            this.dtPicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.dtPicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,33 +55,6 @@
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(838, 508);
             this.dataGridView1.TabIndex = 29;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // btnQuery
-            // 
-            this.btnQuery.Location = new System.Drawing.Point(380, 67);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(75, 33);
-            this.btnQuery.TabIndex = 28;
-            this.btnQuery.Text = "查询";
-            this.btnQuery.UseVisualStyleBackColor = true;
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
-            // 
-            // dtPicker1
-            // 
-            this.dtPicker1.Location = new System.Drawing.Point(140, 70);
-            this.dtPicker1.Name = "dtPicker1";
-            this.dtPicker1.Size = new System.Drawing.Size(200, 27);
-            this.dtPicker1.TabIndex = 25;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 20);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "销售时间：";
             // 
             // Column1
             // 
@@ -121,6 +94,32 @@
             this.Column7.ReadOnly = true;
             this.Column7.Width = 90;
             // 
+            // btnQuery
+            // 
+            this.btnQuery.Location = new System.Drawing.Point(380, 67);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 33);
+            this.btnQuery.TabIndex = 28;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // dtPicker1
+            // 
+            this.dtPicker1.Location = new System.Drawing.Point(140, 70);
+            this.dtPicker1.Name = "dtPicker1";
+            this.dtPicker1.Size = new System.Drawing.Size(200, 27);
+            this.dtPicker1.TabIndex = 25;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(44, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 20);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "销售时间：";
+            // 
             // DailySalesStatisticsCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
@@ -130,6 +129,7 @@
             this.Controls.Add(this.label2);
             this.Name = "DailySalesStatisticsCtrl";
             this.TitleText = "日销售统计";
+            this.Load += new System.EventHandler(this.DailySalesStatisticsCtrl_Load);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.dtPicker1, 0);
             this.Controls.SetChildIndex(this.btnQuery, 0);
