@@ -53,5 +53,9 @@ namespace SalesManagement.BLL {
        public List<ReturnInfo> QueryWithSalesNoAndDate(out string errText, string returnNo, DateTime dateTime1, DateTime dateTime2) {
            return _dal.GetEntityListWithSalesNoAndDate(out errText, returnNo, dateTime1, dateTime2);
        }
+
+       public System.Data.DataTable GetDetailsByDocId(out string errText, Guid id) {
+           return _dal.GetEntityListById(out errText, id);
+       }
    }
 }

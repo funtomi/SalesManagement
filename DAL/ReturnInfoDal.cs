@@ -91,6 +91,29 @@ namespace DAL {
                 return null;
             }
         }
+
+        public DataTable GetEntityListById(out string errText, Guid id) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select A.ReturnDocId,B.CommodityId,B.ReturnDetailDocId,C.UnitPrice,C.CommodityName,C.CommodityNo,C.Size,C.Color,B.Price,B.WarehouseId from ReturnDoc A"
+                            + " left join ReturnDetailDoc B on A.ReturnDocId=B.ReturnDocId"
+                            + " left join CommodityInfo C on C.CommodityId=B.CommodityId"
+                            + " where A.ReturnDocId=@Id";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    conn.Close();
+                    return dt;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
     }
 
 

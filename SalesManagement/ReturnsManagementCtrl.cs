@@ -22,7 +22,7 @@ namespace SalesManagement.UI {
         private UserInfo _userInfo;
         private SalesInfoService _salesInfoService = new SalesInfoService();
         private ReturnInfoService _returnInfoService = new ReturnInfoService();
-
+        private ReturnInfo _info;
         private void InitData() {
             this.txtBoxQuery.Text = "";
             this.txtReason.Text = "";
@@ -139,6 +139,16 @@ namespace SalesManagement.UI {
             }
             return sum;
         }
+
+        /// <summary>
+        /// 清除界面信息
+        /// </summary>
+        private void ClearPage() {
+            this.lblOperatorName.Text = this.lblReturnNo.Text = "";
+            this.lblPrice.Text = "0";
+            this.txtBoxQuery.Text = "";
+            this.dataGridView1.DataSource = CreateDtTemplate();
+        }
         #region 事件
         private void ReturnsManagementCtrl_Load(object sender, EventArgs e) {
             InitData();
@@ -227,5 +237,61 @@ namespace SalesManagement.UI {
          }
         #endregion
 
+        #region 显示退货明细
+         public ReturnsManagementCtrl(ReturnInfo info)
+            : this() {
+            this.Load -= ReturnsManagementCtrl_Load;
+            this.Load += ReturnsManagementCtrl_Load2;
+            _info = info;
+        }
+
+         private void ReturnsManagementCtrl_Load2(object sender, EventArgs e) {
+            SetReadOnlyPage(_info);
+        }
+
+        /// <summary>
+        /// 设置只读页面信息
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetReadOnlyPage(ReturnInfo info) {
+            if (_info == null) {
+                ClearPage();
+            }
+            this.lblReturnNo.Text = info.ReturnDocNo.ToString();
+            UserInfoService _userInfoService = new UserInfoService();
+            string errText = "";
+            var operatorName = _userInfoService.GetUserNameById(out errText, info.OperatorId);
+            this.lblOperatorName.Text = string.IsNullOrEmpty(operatorName) ? "" : operatorName;
+            this.dtPickerStart.Value = info.ReturnTime;
+            this.dtPickerStart.Enabled = false;
+            this.label4.Visible = this.dtPickerEnd.Visible = this.btnQuery.Visible = false;
+            this.cmboxSelect.Visible = this.txtBoxQuery.Visible = this.btnReturn.Visible = false;
+            this.txtReason.Text = info.Reason;
+            this.txtReason.Enabled = false;
+            SetDetailInfo(info.ReturnDocId);
+        }
+
+        /// <summary>
+        /// 设置商品明细
+        /// </summary>
+        /// <param name="id"></param>
+        private void SetDetailInfo(Guid id) {
+            this.dataGridView1.Columns["Column3"].ReadOnly = true;
+            this.dataGridView1.Columns["Column6"].Visible = false;
+            if (id == Guid.Empty) {
+                this.dataGridView1.DataSource = CreateDtTemplate();
+                return;
+            }
+            ReturnInfoService _srv = new ReturnInfoService();
+            string errText = "";
+            DataTable dt = _srv.GetDetailsByDocId(out errText, id);
+            if (dt == null || dt.Rows.Count == 0) {
+                this.dataGridView1.DataSource = CreateDtTemplate();
+                return;
+            }
+            this.dataGridView1.DataSource = dt;
+            CaculateSum();
+        }
+        #endregion
     }
 }

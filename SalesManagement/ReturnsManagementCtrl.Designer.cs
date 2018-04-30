@@ -30,17 +30,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnQuery = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnReturn = new System.Windows.Forms.Button();
-            this.cmboxSelect = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtReason = new System.Windows.Forms.TextBox();
-            this.lblReturnNo = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblOperatorName = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.Column6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +42,17 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReturn = new System.Windows.Forms.Button();
+            this.cmboxSelect = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtReason = new System.Windows.Forms.TextBox();
+            this.lblReturnNo = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblOperatorName = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,7 +102,7 @@
             // btnQuery
             // 
             this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnQuery.Location = new System.Drawing.Point(808, 117);
+            this.btnQuery.Location = new System.Drawing.Point(808, 110);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(71, 31);
             this.btnQuery.TabIndex = 10;
@@ -137,6 +137,95 @@
             this.dataGridView1.Size = new System.Drawing.Size(839, 347);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "IsSelected";
+            this.Column6.FalseValue = "False";
+            this.Column6.HeaderText = "选择";
+            this.Column6.Name = "Column6";
+            this.Column6.TrueValue = "True";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "CommodityNo";
+            this.Column1.HeaderText = "商品编号";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "CommodityName";
+            this.Column2.HeaderText = "商品名称";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Size";
+            this.Column4.HeaderText = "尺码";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Color";
+            this.Column5.HeaderText = "颜色";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Count";
+            this.Column3.HeaderText = "数量";
+            this.Column3.Name = "Column3";
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "Price";
+            this.Column7.HeaderText = "出售价格";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "CommodityId";
+            this.Column12.HeaderText = "CommodityId";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Visible = false;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "UnitPrice";
+            this.Column9.HeaderText = "UntiPrice";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "ReturnDetailDocId";
+            this.Column10.HeaderText = "ReturnDetailDocId";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "ReturnDocId";
+            this.Column11.HeaderText = "ReturnDocId";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Visible = false;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "WarehouseId";
+            this.Column8.HeaderText = "WarehouseId";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Visible = false;
             // 
             // btnReturn
             // 
@@ -229,9 +318,9 @@
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(261, 117);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 20);
+            this.label2.Size = new System.Drawing.Size(54, 20);
             this.label2.TabIndex = 21;
-            this.label2.Text = "操作员：";
+            this.label2.Text = "金额：";
             // 
             // lblPrice
             // 
@@ -252,95 +341,6 @@
             this.label8.Size = new System.Drawing.Size(24, 20);
             this.label8.TabIndex = 22;
             this.label8.Text = "元";
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "IsSelected";
-            this.Column6.FalseValue = "False";
-            this.Column6.HeaderText = "选择";
-            this.Column6.Name = "Column6";
-            this.Column6.TrueValue = "True";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "CommodityNo";
-            this.Column1.HeaderText = "商品编号";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "CommodityName";
-            this.Column2.HeaderText = "商品名称";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Size";
-            this.Column4.HeaderText = "尺码";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Color";
-            this.Column5.HeaderText = "颜色";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Count";
-            this.Column3.HeaderText = "数量";
-            this.Column3.Name = "Column3";
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "Price";
-            this.Column7.HeaderText = "出售价格";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "CommodityId";
-            this.Column12.HeaderText = "CommodityId";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Visible = false;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "UnitPrice";
-            this.Column9.HeaderText = "UntiPrice";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "ReturnDetailDocId";
-            this.Column10.HeaderText = "ReturnDetailDocId";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Visible = false;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "ReturnDocId";
-            this.Column11.HeaderText = "ReturnDocId";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Visible = false;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "WarehouseId";
-            this.Column8.HeaderText = "WarehouseId";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Visible = false;
             // 
             // ReturnsManagementCtrl
             // 

@@ -92,6 +92,12 @@ namespace SalesManagement.UI {
 
         private void tSMenuItemReturnsInfoQuery_Click(object sender, EventArgs e) {
             ReturnsInfoQueryCtrl ctrl = new ReturnsInfoQueryCtrl();
+            ctrl.ViewDetailsEvent += new ReturnsInfoQueryCtrl.ViewDetailsDelegate(ReturnsInfoQueryCtrl_ViewDetailsEvent);
+            ChangeFormTo(ctrl);
+        }
+
+        private void ReturnsInfoQueryCtrl_ViewDetailsEvent(ReturnInfo info) {
+            ReturnsManagementCtrl ctrl = new ReturnsManagementCtrl(info);
             ChangeFormTo(ctrl);
         }
 

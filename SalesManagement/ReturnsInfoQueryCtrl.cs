@@ -106,6 +106,28 @@ namespace SalesManagement.UI {
 
         #endregion
 
+        #region 打开明细界面
+        public delegate void ViewDetailsDelegate(ReturnInfo info);
+        public ViewDetailsDelegate ViewDetailsEvent;
+
+        /// <summary>
+        /// 双击某一个订单时打开明细界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.RowIndex < 0) {
+                return;
+            }
+            var item = this.dataGridView1.Rows[e.RowIndex].DataBoundItem as ReturnInfo;
+            if (item == null) {
+                return;
+            }
+            if (ViewDetailsEvent != null) {
+                ViewDetailsEvent(item);
+            }
+        }
+        #endregion
        
     }
 }
