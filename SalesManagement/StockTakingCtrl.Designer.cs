@@ -65,6 +65,7 @@
             this.Column11});
             this.dataGridView1.Location = new System.Drawing.Point(38, 148);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(836, 483);
             this.dataGridView1.TabIndex = 22;
@@ -77,6 +78,7 @@
             this.btnQuery.TabIndex = 21;
             this.btnQuery.Text = "盘点";
             this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // label1
             // 
@@ -89,11 +91,13 @@
             // 
             // cmboxWarehouse
             // 
+            this.cmboxWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxWarehouse.FormattingEnabled = true;
             this.cmboxWarehouse.Location = new System.Drawing.Point(125, 69);
             this.cmboxWarehouse.Name = "cmboxWarehouse";
             this.cmboxWarehouse.Size = new System.Drawing.Size(200, 28);
             this.cmboxWarehouse.TabIndex = 23;
+            this.cmboxWarehouse.SelectedIndexChanged += new System.EventHandler(this.cmboxWarehouse_SelectedIndexChanged);
             // 
             // label2
             // 

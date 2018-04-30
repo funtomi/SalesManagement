@@ -45,18 +45,18 @@ namespace DAL {
         /// </summary>
         /// <param name="errText"></param>
         /// <returns></returns>
-        public List<StockDetailClientInfo> GetEntityList(out string errText) {
+        public List<StockClientInfo> GetEntityList(out string errText) {
             errText = "";
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "select * from Stock left join StockDetail on Stock.WarehouseId=StockDetail.WarehouseId"; 
+                    var sql = "	select A.WarehouseId,A.Count,A.Capacity,B.WarehouseName from Stock A left join WarehouseInfo B on A.WarehouseId=B.WarehouseId"; 
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     SqlDataAdapter ada = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     ada.Fill(dt);
                     conn.Close();
-                    var list = DataTableHelper.ToList<StockDetailClientInfo>(dt);
+                    var list = DataTableHelper.ToList<StockClientInfo>(dt);
                     return list;
                 }
             } catch (Exception ex) {
@@ -140,6 +140,36 @@ namespace DAL {
             } catch (Exception ex) {
                 errText = ex.Message;
                 return 0;
+            }
+        }
+
+        /// <summary>
+        /// 获取库存明细
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <param name="warehouseId"></param>
+        /// <returns></returns>
+        public List<StockManageInf> GetDetailEntityList(out string errText, Guid warehouseId) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select A.WarehouseId,A.StockDetailId,A.CommodityId,A.Count,B.CommodityName,B.CommodityNo,B.Color,B.Size,B.UnitPrice,B.Remark from StockDetail A"
+                            +" left join CommodityInfo B on A.CommodityId=B.CommodityId"
+                            + " where A.WarehouseId=@WarehouseId";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@WarehouseId", warehouseId);
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    var i = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    var list = DataTableHelper.ToList<StockManageInf>(dt);
+                    return list;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
             }
         }
     }

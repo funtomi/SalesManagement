@@ -161,21 +161,21 @@ namespace SalesManagement.BLL {
             if (info == null || details == null || details.Count == 0) {
                 errText = "信息不足，退货失败！";
                 return 0;
-            } 
+            }
             foreach (var commodity in details) {
                 var list = _stockInfoDal.GetEntityList(out errText, commodity.WarehouseId, true);
                 if (list == null || list.Count == 0) {
                     return 0;
                 }
                 var com = list[0];
-                if (com.Capacity - com.Count<commodity.Count) {
+                if (com.Capacity - com.Count < commodity.Count) {
                     errText = "仓库容量不足!";
                     return 0;
                 }
             }
-           
+
             foreach (var item in details) {
-                var i = SaveStockDetailInfo(out errText, item.WarehouseId, item.CommodityId, item.Count,"");
+                var i = SaveStockDetailInfo(out errText, item.WarehouseId, item.CommodityId, item.Count, "");
                 if (i <= 0) {
                     return i;
                 }
@@ -183,8 +183,12 @@ namespace SalesManagement.BLL {
             return 1;
         }
 
-        public List<StockDetailClientInfo> GetAllStocks(out string errText) {
-           return _stockInfoDal.GetEntityList(out errText);
+        public List<StockClientInfo> GetAllStocks(out string errText) {
+            return _stockInfoDal.GetEntityList(out errText);
+        }
+
+        public List<StockManageInf> GetStockManageInfos(out string errText, Guid warehouseId) {
+            return _stockInfoDal.GetDetailEntityList(out errText, warehouseId);
         }
     }
 }
