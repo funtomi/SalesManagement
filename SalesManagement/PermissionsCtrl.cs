@@ -15,6 +15,7 @@ namespace SalesManagement.UI {
         }
         private UserInfoService _userInfoService = new UserInfoService();
         private Guid _currentId;
+        private bool _isClear = true;
 
         /// <summary>
         /// 创建模板数据源
@@ -72,6 +73,7 @@ namespace SalesManagement.UI {
         /// </summary>
         private void ClearPage() {
             this.txtBoxUserName.Text = this.txtBoxPassword.Text = this.txtBoxRemark.Text = "";
+            _isClear = true;
         }
 
         /// <summary>
@@ -224,6 +226,10 @@ namespace SalesManagement.UI {
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e) {
             if (e.RowIndex < 0) {
+                return;
+            }
+            if (_isClear) {
+                _isClear = false;
                 return;
             }
             ClearPage();
