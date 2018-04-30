@@ -82,7 +82,7 @@ namespace DAL {
             try {
                 using (SqlConnection conn = new SqlConnection(SQL_CON)) {
                     conn.Open();
-                    var sql = "update CommodityInfo set CommodityName=@CommodityName,TypeId=@CommodityNo,CommodityNo=@CommodityNo,Size=@Size,Color=@Color,UnitPrice=@UnitPrice,Discount=@Discount,Unit=@Unit,Remark=@Remark where CommodityId=@CommodityId";
+                    var sql = "update CommodityInfo set CommodityName=@CommodityName,TypeId=@TypeId,CommodityNo=@CommodityNo,Size=@Size,Color=@Color,UnitPrice=@UnitPrice,Discount=@Discount,Unit=@Unit,Remark=@Remark where CommodityId=@CommodityId";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@CommodityId", commodityInfo.CommodityId);
                     cmd.Parameters.AddWithValue("@CommodityName", commodityInfo.CommodityName);

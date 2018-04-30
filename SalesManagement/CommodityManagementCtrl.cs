@@ -111,7 +111,7 @@ namespace SalesManagement.UI {
         /// </summary>
         private void ClearPage() {
             this.txtBoxCommodityNo.Text = this.txtBoxCommodityName.Text = this.txtBoxUnitPrice.Text = this.txtBoxDiscount.Text
-                = this.txtBoxRemark.Text = this.txtBoxUnit.Text = "";
+                = this.txtBoxRemark.Text = "";
             this.cmboxSize.SelectedIndex =this.cmboxSize.SelectedIndex>0?0:this.cmboxSize.SelectedIndex;
             this.cmboxColor.SelectedIndex =this.cmboxColor.SelectedIndex>0?0:this.cmboxColor.SelectedIndex;
         }
