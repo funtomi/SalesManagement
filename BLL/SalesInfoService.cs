@@ -77,5 +77,9 @@ namespace SalesManagement.BLL {
             var endDt = dateTime.AddDays(1 - dateTime.Day).AddMonths(1).AddDays(-1);  
             return _dal.GetStatisticData(out errText, startDt, endDt);
         }
+
+        public DataTable GetDetailsByDocNo(out string errText, Guid id) {
+            return _dal.GetEntityList(out errText, id);
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace SalesManagement.UI {
         private Guid _salesId = Guid.NewGuid();
         private SalesInfoService _srv = new SalesInfoService();
         private StockManageService _stockSrv = new StockManageService();
+        private SalesInfo _info;
         /// <summary>
         /// 初始化数据
         /// </summary>
@@ -302,5 +303,64 @@ namespace SalesManagement.UI {
             InitData();
         }
         #endregion  
+
+        #region 显示销售明细
+        public SalesStaffCtrl(SalesInfo info)
+            : this() {
+            this.Load -= SalesStaffCtrl_Load;
+            this.Load += SalesStaffCtrl_Load2;
+            _info = info;
+        }
+
+        private void SalesStaffCtrl_Load2(object sender, EventArgs e) {
+            SetReadOnlyPage(_info);
+        }
+
+        /// <summary>
+        /// 设置只读页面信息
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetReadOnlyPage(SalesInfo info) {
+            if (_info == null) {
+                ClearPage();
+            }
+            this.lblOrderNo.Text = info.SalesDocNo.ToString();
+            UserInfoService _userInfoService = new UserInfoService();
+            string errText = "";
+            var operatorName = _userInfoService.GetUserNameById(out errText, info.OperatorId);
+            this.lblOperator.Text = string.IsNullOrEmpty(operatorName) ? "" : operatorName;
+            CustomerInfoService custmSrv = new CustomerInfoService();
+            this.txtBoxCustomer.Text= custmSrv.GetCustomerNameById(out errText, info.CustomerId);
+            this.btnSelectCustomer.Visible = false;
+            this.dtPicker1.Value = info.SalesTime;
+            this.dtPicker1.Enabled = false;
+            this.btnAdd.Visible = this.btnDelete.Visible = this.btnCancel.Visible = this.btnOk.Visible = false;
+            this.txtboxRemark.Text = info.Remark;
+            this.txtboxRemark.Enabled = false;
+            SetDetailInfo(info.SalesDocId);
+
+        }
+
+        /// <summary>
+        /// 设置商品明细
+        /// </summary>
+        /// <param name="id"></param>
+        private void SetDetailInfo(Guid id) {
+            this.dataGridView1.Columns["Column6"].ReadOnly = true;
+            if (id == Guid.Empty) {
+                this.dataGridView1.DataSource = CreateDtTemplate();
+                return;
+            }
+            SalesInfoService _srv = new SalesInfoService();
+            string errText = "";
+            DataTable dt = _srv.GetDetailsByDocNo(out errText, id);
+            if (dt == null || dt.Rows.Count == 0) {
+                this.dataGridView1.DataSource = CreateDtTemplate();
+                return;
+            }
+            this.dataGridView1.DataSource = dt;
+            CaculateSum();
+        }
+        #endregion
     }
 }

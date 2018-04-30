@@ -64,5 +64,14 @@ namespace SalesManagement.BLL {
             return dal.DeleteEntity(out errText, id);
         }
 
+        /// <summary>
+        /// 根据客户ID获取客户名称
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <param name="guid"></param>
+        /// <returns></returns>
+        public string GetCustomerNameById(out string errText, Guid id) {
+            return dal.GetEntityList(out errText, id);
+        }
     }
 }

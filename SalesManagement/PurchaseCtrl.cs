@@ -19,65 +19,7 @@ namespace SalesManagement.UI {
             : this() {
             _userInfo = userInfo;
         }
-
-        public PurchaseCtrl(PurchaseDocClientInfo info)
-            : this() {
-            this.Load -= PurchaseCtrl_Load;
-            this.Load += PurchaseCtrl_Load2;
-            _info = info;
-        }
-
-        private void PurchaseCtrl_Load2(object sender, EventArgs e) {
-            SetReadOnlyPage(_info);
-        }
-
-        /// <summary>
-        /// 设置只读页面信息
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetReadOnlyPage(PurchaseDocClientInfo info) {
-            if (_info == null) {
-                ClearPage();
-            }
-            this.lblOrderNo.Text = info.PurchaseDocNo.ToString();
-            UserInfoService _userInfoService = new UserInfoService();
-            string errText = "";
-            var operatorName = _userInfoService.GetUserNameById(out errText, info.OperatorId);
-            this.lblOperator.Text = string.IsNullOrEmpty(operatorName) ? "" : operatorName;
-            this.cmboxSupplier.Items.Add(info.SupplierName);
-            this.cmboxSupplier.SelectedIndex = 0;
-            this.cmboxWarehouse.Items.Add (info.WarehouseName);
-            this.cmboxWarehouse.SelectedIndex = 0;
-
-            this.dtPicker1.Value = info.PurchaseTime;
-            this.dtPicker1.Enabled = false;
-            this.btnAdd.Visible = this.btnDelete.Visible = this.btnCancel.Visible = this.btnOk.Visible = false;
-            this.txtboxRemark.Text = info.Remark;
-            this.txtboxRemark.Enabled = false;
-            SetDetailInfo(info.PurchaseDocId);
-            
-        }
-
-        /// <summary>
-        /// 设置商品明细
-        /// </summary>
-        /// <param name="purchaseDocId"></param>
-        private void SetDetailInfo(Guid purchaseDocId) {
-            this.dataGridView1.Columns["Column6"].ReadOnly = true;
-            if (purchaseDocId==Guid.Empty) {
-                this.dataGridView1.DataSource = CreateDtTemplate();
-                return;
-            }
-            PurchaseOrderDocService _srv = new PurchaseOrderDocService();
-            string errText="";
-            DataTable dt = _srv.GetDetailsByDocNo(out errText, purchaseDocId);
-            if (dt==null||dt.Rows.Count==0) {
-                this.dataGridView1.DataSource = CreateDtTemplate();
-                return;
-            }
-            this.dataGridView1.DataSource = dt;
-            CaculateSum();
-        }
+        
         /// <summary>
         /// 用户信息
         /// </summary>
@@ -367,6 +309,67 @@ namespace SalesManagement.UI {
             }
         }
 
+        #endregion
+
+        #region 显示进货明细
+        public PurchaseCtrl(PurchaseDocClientInfo info)
+            : this() {
+            this.Load -= PurchaseCtrl_Load;
+            this.Load += PurchaseCtrl_Load2;
+            _info = info;
+        }
+
+        private void PurchaseCtrl_Load2(object sender, EventArgs e) {
+            SetReadOnlyPage(_info);
+        }
+
+        /// <summary>
+        /// 设置只读页面信息
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetReadOnlyPage(PurchaseDocClientInfo info) {
+            if (_info == null) {
+                ClearPage();
+            }
+            this.lblOrderNo.Text = info.PurchaseDocNo.ToString();
+            UserInfoService _userInfoService = new UserInfoService();
+            string errText = "";
+            var operatorName = _userInfoService.GetUserNameById(out errText, info.OperatorId);
+            this.lblOperator.Text = string.IsNullOrEmpty(operatorName) ? "" : operatorName;
+            this.cmboxSupplier.Items.Add(info.SupplierName);
+            this.cmboxSupplier.SelectedIndex = 0;
+            this.cmboxWarehouse.Items.Add(info.WarehouseName);
+            this.cmboxWarehouse.SelectedIndex = 0;
+
+            this.dtPicker1.Value = info.PurchaseTime;
+            this.dtPicker1.Enabled = false;
+            this.btnAdd.Visible = this.btnDelete.Visible = this.btnCancel.Visible = this.btnOk.Visible = false;
+            this.txtboxRemark.Text = info.Remark;
+            this.txtboxRemark.Enabled = false;
+            SetDetailInfo(info.PurchaseDocId);
+
+        }
+
+        /// <summary>
+        /// 设置商品明细
+        /// </summary>
+        /// <param name="purchaseDocId"></param>
+        private void SetDetailInfo(Guid purchaseDocId) {
+            this.dataGridView1.Columns["Column6"].ReadOnly = true;
+            if (purchaseDocId == Guid.Empty) {
+                this.dataGridView1.DataSource = CreateDtTemplate();
+                return;
+            }
+            PurchaseOrderDocService _srv = new PurchaseOrderDocService();
+            string errText = "";
+            DataTable dt = _srv.GetDetailsByDocNo(out errText, purchaseDocId);
+            if (dt == null || dt.Rows.Count == 0) {
+                this.dataGridView1.DataSource = CreateDtTemplate();
+                return;
+            }
+            this.dataGridView1.DataSource = dt;
+            CaculateSum();
+        }
         #endregion
     }
 }

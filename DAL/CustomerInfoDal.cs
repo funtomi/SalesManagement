@@ -121,5 +121,25 @@ namespace DAL {
             }
         }
 
+        public string GetEntityList(out string errText, Guid id) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select CustomerName from CustomerInfo where CustomerId=@Id";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    var result = cmd.ExecuteScalar();
+                    conn.Close();
+                    if (result == null) {
+                        return null;
+                    }
+                    return result.ToString();
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
     }
 }

@@ -81,6 +81,12 @@ namespace SalesManagement.UI {
 
         private void tSMenuItemSalesInfoQuery_Click(object sender, EventArgs e) {
             SalesInfoQueryCtrl ctrl = new SalesInfoQueryCtrl();
+            ctrl.ViewDetailsEvent += new SalesInfoQueryCtrl.ViewDetailsDelegate(SalesInfoQueryCtrl_ViewDetailsEvent);
+            ChangeFormTo(ctrl);
+        }
+
+        private void SalesInfoQueryCtrl_ViewDetailsEvent(SalesInfo info) {
+            SalesStaffCtrl ctrl = new SalesStaffCtrl(info);
             ChangeFormTo(ctrl);
         }
 

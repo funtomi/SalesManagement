@@ -31,7 +31,6 @@
             this.dtPickerStart = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnQueryAll = new System.Windows.Forms.Button();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +38,7 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnQueryAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,16 +122,7 @@
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(836, 469);
             this.dataGridView1.TabIndex = 14;
-            // 
-            // btnQueryAll
-            // 
-            this.btnQueryAll.Location = new System.Drawing.Point(782, 109);
-            this.btnQueryAll.Name = "btnQueryAll";
-            this.btnQueryAll.Size = new System.Drawing.Size(94, 40);
-            this.btnQueryAll.TabIndex = 15;
-            this.btnQueryAll.Text = "查看全部";
-            this.btnQueryAll.UseVisualStyleBackColor = true;
-            this.btnQueryAll.Click += new System.EventHandler(this.btnQueryAll_Click);
+            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
             // Column10
             // 
@@ -185,6 +176,16 @@
             this.Column9.HeaderText = "备注";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
+            // 
+            // btnQueryAll
+            // 
+            this.btnQueryAll.Location = new System.Drawing.Point(782, 109);
+            this.btnQueryAll.Name = "btnQueryAll";
+            this.btnQueryAll.Size = new System.Drawing.Size(94, 40);
+            this.btnQueryAll.TabIndex = 15;
+            this.btnQueryAll.Text = "查看全部";
+            this.btnQueryAll.UseVisualStyleBackColor = true;
+            this.btnQueryAll.Click += new System.EventHandler(this.btnQueryAll_Click);
             // 
             // SalesInfoQueryCtrl
             // 

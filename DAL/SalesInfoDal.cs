@@ -155,6 +155,31 @@ namespace DAL {
                 return null;
             }
         }
+
+        public DataTable GetEntityList(out string errText, Guid id) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select A.SalesDocId,B.SalesDetailDocId,B.CommodityId,C.CommodityName,B.WarehouseId,B.Count,C.Size,C.Color,C.Unit,"
+                             + "D.WarehouseName,C.UnitPrice,C.Discount,B.Price,B.Remark from SalesDoc A "
+                             + "left join SalesDetailDoc B on A.SalesDocId=B.SalesDocId"
+                             + " left join CommodityInfo C on B.CommodityId=C.CommodityId"
+                             + " left join WarehouseInfo D on B.WarehouseId=D.WarehouseId"
+                             + " where A.SalesDocId=@Id";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    conn.Close();
+                    return dt;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
     }
     public class SalesDetailInfoDal: DalBase {
 

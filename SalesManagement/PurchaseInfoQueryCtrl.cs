@@ -102,10 +102,11 @@ namespace SalesManagement.UI {
         }
         
         #endregion
+    
+        #region 打开明细界面
         public delegate void ViewDetailsDelegate(PurchaseDocClientInfo info);
         public ViewDetailsDelegate ViewDetailsEvent;
 
-        #region 打开明细界面
         /// <summary>
         /// 双击某一个订单时打开明细界面
         /// </summary>
