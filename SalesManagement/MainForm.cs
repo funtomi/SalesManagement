@@ -70,6 +70,12 @@ namespace SalesManagement.UI {
 
         private void tSMenuItemPurchaseInfoQuery_Click(object sender, EventArgs e) {
             PurchaseInfoQueryCtrl ctrl = new PurchaseInfoQueryCtrl();
+            ctrl.ViewDetailsEvent += new PurchaseInfoQueryCtrl.ViewDetailsDelegate(PurchaseInfoQueryCtrl_ViewDetailsEvent);
+            ChangeFormTo(ctrl);
+        }
+
+        private void PurchaseInfoQueryCtrl_ViewDetailsEvent(PurchaseDocClientInfo info) {
+            PurchaseCtrl ctrl = new PurchaseCtrl(info);
             ChangeFormTo(ctrl);
         }
 

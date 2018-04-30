@@ -79,6 +79,10 @@ namespace SalesManagement.BLL {
             }
             return result[0];
         }
+
+        public String GetUserNameById(out string errText, Guid userId) {
+            return dal.GetEntityList(out errText, userId);
+        }
         
     }
 }

@@ -53,5 +53,9 @@ namespace SalesManagement.BLL {
             return _dal.GetEntityList(out errText);
 
         }
+
+        public System.Data.DataTable GetDetailsByDocNo(out string errText, Guid purchaseDocId) {
+            return _detailDal.GetEntityList(out errText, purchaseDocId);
+        }
     }
 }

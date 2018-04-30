@@ -149,5 +149,29 @@ namespace DAL {
                 return 0;
             }
         }
+
+        public DataTable GetEntityList(out string errText, Guid purchaseDocId) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "select A.PurchaseDocId,B.PurchaseDetailDocId,B.CommodityId,C.CommodityName,B.Count,C.Size,C.Color,C.Unit,C.UnitPrice,B.Price,B.Remark from PurchaseDoc A"
+                            +" left join PurchaseDetailDoc B on A.PurchaseDocId=B.PurchaseDocId"
+                            +" left join CommodityInfo C on B.CommodityId=C.CommodityId"
+                            + " where A.PurchaseDocId=@PurchaseDocId";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@PurchaseDocId", purchaseDocId);
+                    SqlDataAdapter ada = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ada.Fill(dt);
+                    conn.Close();
+                    return dt;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return null;
+            }
+        }
     }
 }

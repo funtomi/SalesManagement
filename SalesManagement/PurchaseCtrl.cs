@@ -15,8 +15,68 @@ namespace SalesManagement.UI {
             InitializeComponent();
         }
 
-        public PurchaseCtrl(UserInfo userInfo) :this(){
+        public PurchaseCtrl(UserInfo userInfo)
+            : this() {
             _userInfo = userInfo;
+        }
+
+        public PurchaseCtrl(PurchaseDocClientInfo info)
+            : this() {
+            this.Load -= PurchaseCtrl_Load;
+            this.Load += PurchaseCtrl_Load2;
+            _info = info;
+        }
+
+        private void PurchaseCtrl_Load2(object sender, EventArgs e) {
+            SetReadOnlyPage(_info);
+        }
+
+        /// <summary>
+        /// 设置只读页面信息
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetReadOnlyPage(PurchaseDocClientInfo info) {
+            if (_info == null) {
+                ClearPage();
+            }
+            this.lblOrderNo.Text = info.PurchaseDocNo.ToString();
+            UserInfoService _userInfoService = new UserInfoService();
+            string errText = "";
+            var operatorName = _userInfoService.GetUserNameById(out errText, info.OperatorId);
+            this.lblOperator.Text = string.IsNullOrEmpty(operatorName) ? "" : operatorName;
+            this.cmboxSupplier.Items.Add(info.SupplierName);
+            this.cmboxSupplier.SelectedIndex = 0;
+            this.cmboxWarehouse.Items.Add (info.WarehouseName);
+            this.cmboxWarehouse.SelectedIndex = 0;
+
+            this.dtPicker1.Value = info.PurchaseTime;
+            this.dtPicker1.Enabled = false;
+            this.btnAdd.Visible = this.btnDelete.Visible = this.btnCancel.Visible = this.btnOk.Visible = false;
+            this.txtboxRemark.Text = info.Remark;
+            this.txtboxRemark.Enabled = false;
+            SetDetailInfo(info.PurchaseDocId);
+            
+        }
+
+        /// <summary>
+        /// 设置商品明细
+        /// </summary>
+        /// <param name="purchaseDocId"></param>
+        private void SetDetailInfo(Guid purchaseDocId) {
+            this.dataGridView1.Columns["Column6"].ReadOnly = true;
+            if (purchaseDocId==Guid.Empty) {
+                this.dataGridView1.DataSource = CreateDtTemplate();
+                return;
+            }
+            PurchaseOrderDocService _srv = new PurchaseOrderDocService();
+            string errText="";
+            DataTable dt = _srv.GetDetailsByDocNo(out errText, purchaseDocId);
+            if (dt==null||dt.Rows.Count==0) {
+                this.dataGridView1.DataSource = CreateDtTemplate();
+                return;
+            }
+            this.dataGridView1.DataSource = dt;
+            CaculateSum();
         }
         /// <summary>
         /// 用户信息
@@ -28,9 +88,10 @@ namespace SalesManagement.UI {
         private UserInfo _userInfo;
         private Guid _purchaseDocId = Guid.NewGuid();
         private PurchaseOrderDocService _srv = new PurchaseOrderDocService();
-      /// <summary>
-      /// 初始化数据
-      /// </summary>
+        private PurchaseDocClientInfo _info;
+        /// <summary>
+        /// 初始化数据
+        /// </summary>
         private void InitData() {
             _purchaseDocId = Guid.NewGuid();
             ClearPage();
@@ -48,7 +109,7 @@ namespace SalesManagement.UI {
             var warehouseInfoService = new WarehouseInfoService();
             string errText;
             var warehouses = warehouseInfoService.GetEntityList(out errText);
-            if (warehouses==null||warehouses.Count==0) {
+            if (warehouses == null || warehouses.Count == 0) {
                 return;
             }
             this.cmboxWarehouse.DataSource = warehouses;
@@ -64,7 +125,7 @@ namespace SalesManagement.UI {
             var supplierInfoService = new SupplierInfoService();
             string errText;
             var suppliers = supplierInfoService.GetEntityList(out errText);
-            if (suppliers==null||suppliers.Count==0) {
+            if (suppliers == null || suppliers.Count == 0) {
                 return;
             }
             this.cmboxSupplier.DataSource = suppliers;
@@ -112,12 +173,12 @@ namespace SalesManagement.UI {
             dt.Columns.Add("PurchaseDocId", typeof(Guid));
             dt.Columns.Add("CommodityName");
             dt.Columns.Add("CommodityId", typeof(Guid));
-            dt.Columns.Add("Count",typeof(int)); 
+            dt.Columns.Add("Count", typeof(int));
             dt.Columns.Add("Size");
             dt.Columns.Add("Color");
             dt.Columns.Add("Unit");
             dt.Columns.Add("UnitPrice", typeof(decimal));
-            dt.Columns.Add("Price", typeof(decimal)); 
+            dt.Columns.Add("Price", typeof(decimal));
             dt.Columns.Add("Remark");
             return dt;
         }
@@ -155,21 +216,21 @@ namespace SalesManagement.UI {
         /// </summary>
         /// <returns></returns>
         private bool InputValidator() {
-            if (this.cmboxSupplier.SelectedValue==null) {
+            if (this.cmboxSupplier.SelectedValue == null) {
                 MessageBox.Show("请选择供应商！");
                 return false;
             }
-            if (this.cmboxWarehouse.SelectedValue==null) {
+            if (this.cmboxWarehouse.SelectedValue == null) {
                 MessageBox.Show("请选择仓库！");
                 return false;
             }
             var data = this.dataGridView1.DataSource as DataTable;
-            if (data==null||data.Rows.Count==0) {
+            if (data == null || data.Rows.Count == 0) {
                 MessageBox.Show("请选择进货商品！");
                 return false;
             }
             foreach (DataRow item in data.Rows) {
-                if (Convert.ToInt32(item["Count"])<=0) {
+                if (Convert.ToInt32(item["Count"]) <= 0) {
                     MessageBox.Show("商品数量设置不正确！");
                     return false;
                 }
@@ -183,8 +244,8 @@ namespace SalesManagement.UI {
         /// <returns></returns>
         private decimal CaculateSum() {
             var data = this.dataGridView1.DataSource as DataTable;
-            if (data==null||data.Rows.Count==0) {
-                return 0;                
+            if (data == null || data.Rows.Count == 0) {
+                return 0;
             }
             decimal sum = 0m;
             foreach (DataRow row in data.Rows) {
@@ -192,7 +253,7 @@ namespace SalesManagement.UI {
                 sum += price;
             }
             return sum;
-        } 
+        }
 
         #region 事件
         private void PurchaseCtrl_Load(object sender, EventArgs e) {
@@ -212,7 +273,7 @@ namespace SalesManagement.UI {
                     if (dataSrs == null || dataSrs.Rows.Count == 0) {
                         return;
                     }
-                    if (data == null||data.Rows.Count==0) {
+                    if (data == null || data.Rows.Count == 0) {
                         this.dataGridView1.DataSource = dataSrs;
                         CaculateSum();
                         return;
@@ -226,22 +287,22 @@ namespace SalesManagement.UI {
 
         private void btnDelete_Click(object sender, EventArgs e) {
             var selectedList = this.dataGridView1.SelectedRows;
-            if (selectedList==null||selectedList.Count==0) {
+            if (selectedList == null || selectedList.Count == 0) {
                 MessageBox.Show("没有选中的商品！");
                 return;
             }
             var data = this.BindingContext[dataGridView1.DataSource].Current as DataRowCollection;
-            if (data==null||data.Count==0) {
+            if (data == null || data.Count == 0) {
                 return;
             }
             var dt = this.dataGridView1.DataSource as DataTable;
-            if (dt==null||dt.Rows.Count==0) {
+            if (dt == null || dt.Rows.Count == 0) {
                 return;
             }
             foreach (DataRow item in data) {
                 dt.Rows.Remove(item);
             }
-            
+
         }
 
         private void btnOk_Click(object sender, EventArgs e) {
@@ -296,16 +357,16 @@ namespace SalesManagement.UI {
                 var row = this.dataGridView1.Rows[e.RowIndex];
                 if (row == null) {
                     return;
-                } 
+                }
                 var detail = row.DataBoundItem as DataRowView;
                 if (detail == null) {
                     return;
                 }
                 detail["Price"] = (decimal)detail["UnitPrice"] * (int)detail["Count"];
-                this.lblPrice.Text =CaculateSum().ToString();
+                this.lblPrice.Text = CaculateSum().ToString();
             }
-        } 
+        }
 
-        #endregion 
+        #endregion
     }
 }

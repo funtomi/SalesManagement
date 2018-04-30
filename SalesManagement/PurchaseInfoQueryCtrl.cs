@@ -1,4 +1,5 @@
 ﻿using SalesManagement.BLL;
+using SalesManagement.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -101,9 +102,27 @@ namespace SalesManagement.UI {
         }
         
         #endregion
+        public delegate void ViewDetailsDelegate(PurchaseDocClientInfo info);
+        public ViewDetailsDelegate ViewDetailsEvent;
 
-
-       
-
+        #region 打开明细界面
+        /// <summary>
+        /// 双击某一个订单时打开明细界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.RowIndex < 0) {
+                return;
+            }
+            var item = this.dataGridView1.Rows[e.RowIndex].DataBoundItem as PurchaseDocClientInfo;
+            if (item == null) {
+                return;
+            }
+            if (ViewDetailsEvent!=null) {
+                ViewDetailsEvent(item);
+            }
+        }
+        #endregion
     }
 }

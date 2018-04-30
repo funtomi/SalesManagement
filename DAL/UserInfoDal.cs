@@ -146,6 +146,31 @@ namespace DAL {
                return null;
            }
        }
-       
+       /// <summary>
+       /// 根据id获取名称
+       /// </summary>
+       /// <param name="errText"></param>
+       /// <param name="userId"></param>
+       /// <returns></returns>
+       public string GetEntityList(out string errText, Guid userId) {
+           errText = "";
+           try {
+               using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                   conn.Open();
+                   var sql = "select UserName from UserInfo where Id=@Id";
+                   SqlCommand cmd = new SqlCommand(sql, conn);
+                   cmd.Parameters.AddWithValue("@Id", userId);
+                   var result =cmd.ExecuteScalar();
+                   conn.Close();
+                   if (result == null) {
+                       return null;
+                   }
+                   return result.ToString();
+               }
+           } catch (Exception ex) {
+               errText = ex.Message;
+               return null;
+           }
+       }
    }
 }
