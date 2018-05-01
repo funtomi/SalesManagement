@@ -96,12 +96,6 @@
     <Compile Include="DailySalesStatisticsCtrl.Designer.cs">
       <DependentUpon>DailySalesStatisticsCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="LabelAndTextBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LabelAndTextBox.Designer.cs">
-      <DependentUpon>LabelAndTextBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,12 +134,6 @@
     <Compile Include="PurchaseInfoQueryCtrl.Designer.cs">
       <DependentUpon>PurchaseInfoQueryCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseStatisticsCtrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PurchaseStatisticsCtrl.Designer.cs">
-      <DependentUpon>PurchaseStatisticsCtrl.cs</DependentUpon>
-    </Compile>
     <Compile Include="ReturnsInfoQueryCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,12 +145,6 @@
     </Compile>
     <Compile Include="ReturnsManagementCtrl.Designer.cs">
       <DependentUpon>ReturnsManagementCtrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReturnsStatisticsCtrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ReturnsStatisticsCtrl.Designer.cs">
-      <DependentUpon>ReturnsStatisticsCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="SalesInfoQueryCtrl.cs">
       <SubType>UserControl</SubType>
@@ -224,9 +206,6 @@
     <EmbeddedResource Include="DailySalesStatisticsCtrl.resx">
       <DependentUpon>DailySalesStatisticsCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LabelAndTextBox.resx">
-      <DependentUpon>LabelAndTextBox.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,17 +234,11 @@
     <EmbeddedResource Include="PurchaseInfoQueryCtrl.resx">
       <DependentUpon>PurchaseInfoQueryCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PurchaseStatisticsCtrl.resx">
-      <DependentUpon>PurchaseStatisticsCtrl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ReturnsInfoQueryCtrl.resx">
       <DependentUpon>ReturnsInfoQueryCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnsManagementCtrl.resx">
       <DependentUpon>ReturnsManagementCtrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReturnsStatisticsCtrl.resx">
-      <DependentUpon>ReturnsStatisticsCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesInfoQueryCtrl.resx">
       <DependentUpon>SalesInfoQueryCtrl.cs</DependentUpon>

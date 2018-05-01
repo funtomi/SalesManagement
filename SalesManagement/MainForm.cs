@@ -27,11 +27,7 @@ namespace SalesManagement.UI {
 
         /// <summary>
         /// 当前登录的用户信息
-        /// </summary>
-        public UserInfo UserInfo {
-            get { return _userInfo; }
-            set { _userInfo = value; }
-        }
+        /// </summary> 
         private UserInfo _userInfo;
         private bool _hasClosed = false;
 
@@ -101,22 +97,7 @@ namespace SalesManagement.UI {
         private void ReturnsInfoQueryCtrl_ViewDetailsEvent(ReturnInfo info) {
             ReturnsManagementCtrl ctrl = new ReturnsManagementCtrl(info);
             ChangeFormTo(ctrl);
-        }
-
-        private void tSMenuItemCommodityInfoQuery_Click(object sender, EventArgs e) {
-            CommodityInfoQueryCtrl ctrl = new CommodityInfoQueryCtrl();
-            ChangeFormTo(ctrl);
-        }
-
-        private void tSMenuItemPurchaseStatistics_Click(object sender, EventArgs e) {
-            PurchaseStatisticsCtrl ctrl = new PurchaseStatisticsCtrl();
-            ChangeFormTo(ctrl);
-        }
-
-        private void tSMenuItemReturnsStatistics_Click(object sender, EventArgs e) {
-            ReturnsStatisticsCtrl ctrl = new ReturnsStatisticsCtrl();
-            ChangeFormTo(ctrl);
-        }
+        } 
 
         private void tSMenuItemDailySalesStatistics_Click(object sender, EventArgs e) {
             DailySalesStatisticsCtrl ctrl = new DailySalesStatisticsCtrl();
