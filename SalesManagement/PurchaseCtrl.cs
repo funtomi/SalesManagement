@@ -263,7 +263,7 @@ namespace SalesManagement.UI {
             }
             PurchaseDocInfo purchaseDocInfo = new PurchaseDocInfo() {
                 PurchaseDocId = _purchaseDocId, PurchaseDocNo = this.lblOrderNo.Text, SupplierId = supplier.SupplierId, PurchaseTime = this.dtPicker1.Value,
-                OperatorId = _userInfo.Id, WarehouseId = warehouse.WarehouseId, Remark = this.txtboxRemark.Text
+                OperatorId = _userInfo.Id, WarehouseId = warehouse.WarehouseId, Remark = this.txtboxRemark.Text,Price=Convert.ToInt32(this.lblPrice.Text)
             };
             var data = this.dataGridView1.DataSource as DataTable;
             if (data == null || data.Rows.Count == 0) {

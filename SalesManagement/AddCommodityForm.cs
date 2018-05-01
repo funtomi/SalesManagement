@@ -36,17 +36,6 @@ namespace SalesManagement.UI {
         }
         private List<CommodityClientInfo> _selectedInfos = new List<CommodityClientInfo>();
 
-        protected override void WndProc(ref Message msg) {
-            const int WM_SYSCOMMAND = 0x0112;
-            const int SC_CLOSE = 0xF060;
-            if (msg.Msg == WM_SYSCOMMAND && ((int)msg.WParam == SC_CLOSE)) {
-                // 点击winform右上关闭按钮 
-                System.Environment.Exit(0);
-                return;
-            }
-            base.WndProc(ref msg);
-        }
-
         /// <summary>
         /// 创建模板数据源
         /// </summary>

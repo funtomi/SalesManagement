@@ -114,8 +114,6 @@ namespace DAL {
                 return 0;
             }
         }
-
-
       
     }
     public class PurchaseDetailDocInfoDal : DalBase {
