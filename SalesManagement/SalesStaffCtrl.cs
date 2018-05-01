@@ -224,19 +224,15 @@ namespace SalesManagement.UI {
             if (selectedList == null || selectedList.Count == 0) {
                 MessageBox.Show("没有选中的商品！");
                 return;
-            }
-            var data = this.BindingContext[dataGridView1.DataSource].Current as DataRowCollection;
-            if (data == null || data.Count == 0) {
-                return;
-            }
+            } 
             var dt = this.dataGridView1.DataSource as DataTable;
             if (dt == null || dt.Rows.Count == 0) {
                 return;
             }
-            foreach (DataRow item in data) {
-                dt.Rows.Remove(item);
+            foreach (DataGridViewRow item in selectedList) {
+                var row = ((DataRowView)item.DataBoundItem).Row;
+                dt.Rows.Remove(row);
             }
-
         }
 
         private void btnOk_Click(object sender, EventArgs e) {
