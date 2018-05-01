@@ -51,7 +51,12 @@ namespace SalesManagement.BLL {
                 errText = string.Format("已有库存{0},不可设置库存量为{1}！",warehouse.Count,warehouseInfo.Capicity);
                 return 0;
             }
-            return _dal.UpdateEntity(out errText, warehouseInfo);
+            int i= _dal.UpdateEntity(out errText, warehouseInfo);
+            if (i<=0) {
+                return i;
+            }
+            _stockDal.UpdateEntity(out errText,warehouseInfo.WarehouseId,warehouseInfo.Capicity);
+            return i;
         }
 
         /// <summary>

@@ -91,6 +91,31 @@ namespace DAL {
                 return 0;
             }
         }
+        /// <summary>
+        /// 更新仓库容量
+        /// </summary>
+        /// <param name="errText"></param>
+        /// <param name="id"></param>
+        /// <param name="capacity"></param>
+        /// <returns></returns>
+        public int UpdateEntity(out string errText, Guid id,int capacity) {
+            errText = "";
+            try {
+                using (SqlConnection conn = new SqlConnection(SQL_CON)) {
+                    conn.Open();
+                    var sql = "update Stock set Capacity=@Capacity where WarehouseId=@WarehouseId";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@WarehouseId", id);
+                    cmd.Parameters.AddWithValue("@Capacity", capacity);
+                    var i = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    return i;
+                }
+            } catch (Exception ex) {
+                errText = ex.Message;
+                return 0;
+            }
+        }
 
         /// <summary>
         /// 新增一条仓库信息

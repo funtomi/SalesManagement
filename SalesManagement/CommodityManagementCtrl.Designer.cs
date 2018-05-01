@@ -51,13 +51,6 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnQuery = new System.Windows.Forms.Button();
-            this.btnAll = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtBoxCommodityQuery = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtBoxUnit = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +62,13 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.btnAll = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtBoxCommodityQuery = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBoxUnit = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -349,77 +349,12 @@
             this.dataGridView1.Location = new System.Drawing.Point(279, 117);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(611, 225);
             this.dataGridView1.TabIndex = 133;
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
-            // 
-            // btnQuery
-            // 
-            this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnQuery.Location = new System.Drawing.Point(579, 86);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(92, 26);
-            this.btnQuery.TabIndex = 135;
-            this.btnQuery.Text = "查询商品";
-            this.btnQuery.UseVisualStyleBackColor = true;
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
-            // 
-            // btnAll
-            // 
-            this.btnAll.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnAll.Location = new System.Drawing.Point(676, 86);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(92, 26);
-            this.btnAll.TabIndex = 134;
-            this.btnAll.Text = "查看所有";
-            this.btnAll.UseVisualStyleBackColor = true;
-            this.btnAll.Click += new System.EventHandler(this.btnAllUser_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(289, 89);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 20);
-            this.label9.TabIndex = 136;
-            this.label9.Text = "商品编号：";
-            // 
-            // txtBoxCommodityQuery
-            // 
-            this.txtBoxCommodityQuery.Location = new System.Drawing.Point(374, 86);
-            this.txtBoxCommodityQuery.Name = "txtBoxCommodityQuery";
-            this.txtBoxCommodityQuery.Size = new System.Drawing.Size(200, 27);
-            this.txtBoxCommodityQuery.TabIndex = 137;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(304, 493);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 20);
-            this.label11.TabIndex = 139;
-            this.label11.Text = "单位：";
-            // 
-            // txtBoxUnit
-            // 
-            this.txtBoxUnit.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtBoxUnit.Location = new System.Drawing.Point(374, 492);
-            this.txtBoxUnit.Name = "txtBoxUnit";
-            this.txtBoxUnit.Size = new System.Drawing.Size(264, 27);
-            this.txtBoxUnit.TabIndex = 138;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(654, 495);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(173, 20);
-            this.label12.TabIndex = 140;
-            this.label12.Text = "(输入单位请用“,”隔开)";
+            this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
             // 
             // Column1
             // 
@@ -500,6 +435,73 @@
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             this.Column9.Width = 5;
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnQuery.Location = new System.Drawing.Point(579, 86);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(92, 26);
+            this.btnQuery.TabIndex = 135;
+            this.btnQuery.Text = "查询商品";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // btnAll
+            // 
+            this.btnAll.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnAll.Location = new System.Drawing.Point(676, 86);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(92, 26);
+            this.btnAll.TabIndex = 134;
+            this.btnAll.Text = "查看所有";
+            this.btnAll.UseVisualStyleBackColor = true;
+            this.btnAll.Click += new System.EventHandler(this.btnAllUser_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.Location = new System.Drawing.Point(289, 89);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 20);
+            this.label9.TabIndex = 136;
+            this.label9.Text = "商品编号：";
+            // 
+            // txtBoxCommodityQuery
+            // 
+            this.txtBoxCommodityQuery.Location = new System.Drawing.Point(374, 86);
+            this.txtBoxCommodityQuery.Name = "txtBoxCommodityQuery";
+            this.txtBoxCommodityQuery.Size = new System.Drawing.Size(200, 27);
+            this.txtBoxCommodityQuery.TabIndex = 137;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(304, 493);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(54, 20);
+            this.label11.TabIndex = 139;
+            this.label11.Text = "单位：";
+            // 
+            // txtBoxUnit
+            // 
+            this.txtBoxUnit.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBoxUnit.Location = new System.Drawing.Point(374, 492);
+            this.txtBoxUnit.Name = "txtBoxUnit";
+            this.txtBoxUnit.Size = new System.Drawing.Size(264, 27);
+            this.txtBoxUnit.TabIndex = 138;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(654, 495);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(173, 20);
+            this.label12.TabIndex = 140;
+            this.label12.Text = "(输入单位请用“,”隔开)";
             // 
             // CommodityManagementCtrl
             // 
